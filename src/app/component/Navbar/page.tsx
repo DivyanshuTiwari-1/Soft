@@ -15,7 +15,7 @@ const Navbar = () => {
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
                 <img src="/photo/logo.jpeg" className="text-white w-7 h-7 font-bold text-xl rounded-full  border-pink-400"></img>
               </div>
-              <span className="hidden md:block text-lg font-semibold text-gray-300">SoftAI</span>
+              <span className=" md:block text-lg font-semibold text-gray-300">SoftAI</span>
             </div>
           </div>
 

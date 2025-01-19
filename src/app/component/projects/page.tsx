@@ -57,22 +57,23 @@ const ProjectShowcase = () => {
         </h1>
 
         <div className="relative">
-          {/* Navigation Buttons */}
-          <button 
-            onClick={previousProject}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
-            aria-label="Previous project"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          
-          <button 
-            onClick={nextProject}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
-            aria-label="Next project"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
+         {/* Navigation Buttons */}
+<button 
+  onClick={previousProject}
+  className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
+  aria-label="Previous project"
+>
+  <ChevronLeft className="w-6 h-6" />
+</button>
+
+<button 
+  onClick={nextProject}
+  className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
+  aria-label="Next project"
+>
+  <ChevronRight className="w-6 h-6" />
+</button>
+
 
           {/* Project Cards Container */}
           <div className="relative overflow-hidden">

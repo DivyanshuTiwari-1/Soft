@@ -14,8 +14,8 @@ const HeroSection = () => {
   };
 
   return (
-    <header className="relative pt-40 bg-gradient-to-r from-gray-900 to-black text-white py-24">
-      <div className="container mx-auto px-6">
+    <header className="relative pt-40 bg-gradient-to-r from-gray-900 to-black text-white py-24 lg:px-60">
+      <div className="container mx-auto  px-6">
         <div className="max-w-3xl">
           <h1 className="text-5xl font-bold mb-6">
             Transform Your Ideas into{" "}
