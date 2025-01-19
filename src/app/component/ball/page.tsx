@@ -1,7 +1,7 @@
 "use client"
 import React from 'react';
 
-import { motion, useScroll, useTransform, useSpring} from "framer-motion";
+import { motion, useScroll, useTransform, useSpring, MotionValue} from "framer-motion";
 
 
 interface TimelineStep {
@@ -38,7 +38,7 @@ const steps: TimelineStep[] = [
   }
 ];
 
-const FloatingBall = ({ scrollYProgress }: { scrollYProgress: any}) => {
+const FloatingBall = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   // Calculate the vertical position based on scroll progress
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
