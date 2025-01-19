@@ -13,7 +13,7 @@ const ServicesSection = () => {
       threshold: 0.15
     };
 
-    const handleIntersect = (entries: any[]) => {
+    const handleIntersect = (entries:any[])=> {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');

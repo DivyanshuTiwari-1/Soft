@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ChevronLeft, ChevronRight, Github, ExternalLink } from 'lucide-react';
+import { ChevronLeft, ChevronRight} from 'lucide-react';
 
 const projects = [
   {
@@ -80,7 +80,7 @@ const ProjectShowcase = () => {
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {projects.map((project, index) => (
+              {projects.map((project) => (
                 <div 
                   key={project.id}
                   className="w-full flex-shrink-0 px-4"
