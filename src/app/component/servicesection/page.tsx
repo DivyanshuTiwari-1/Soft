@@ -13,7 +13,7 @@ const ServicesSection = () => {
       threshold: 0.15
     };
 
-    const handleIntersect = (entries:any[])=> {
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate-in');
@@ -26,6 +26,7 @@ const ServicesSection = () => {
         }
       });
     };
+    
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
