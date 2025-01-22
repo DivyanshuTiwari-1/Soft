@@ -50,7 +50,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Connect</h4>
             <ul className="space-y-2 text-gray-400">
               <li className="flex items-center space-x-2">
-                <Link href="https://x.com/softAI77?t=CNd9pYwYnpvj0xjnLLmYwA&s=08" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
+                <Link href="https://x.com/softai_site?s=08" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
                   <Twitter className="h-5 w-5 text-gray-400 hover:text-purple-400 transition-colors cursor-pointer" />
                   <span>Twitter</span>
                 </Link>
