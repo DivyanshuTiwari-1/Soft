@@ -29,7 +29,7 @@ const MVPWebsite = () => {
       {/* Hero Section */}
       <HeroSection />
       <WhyFeatures/>
-      <Timeline/>
+     
 
      <ServicesSection/>
      <ProjectShowcase/>
