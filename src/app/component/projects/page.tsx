@@ -6,6 +6,15 @@ import { ChevronLeft, ChevronRight} from 'lucide-react';
 
 const projects = [
   {
+    id: '0',
+    title: ' AI Notes taking app',
+    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/ai.png',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
     id: '1',
     title: ' Ngl web app',
     description: 'A web app like Instagram’s NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
