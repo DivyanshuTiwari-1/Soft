@@ -6,7 +6,44 @@ import { ChevronLeft, ChevronRight} from 'lucide-react';
 
 const projects = [
   {
-    id: '0',
+    id: '1',
+    title: 'AI Ranking app',
+    description: 'A website where user can generate rankings base on real time data',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/ima.webp',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  
+  {
+    id: '2',
+    title: 'AI notes taking app',
+    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/ai.png',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '3',
+    title: 'Framer design',
+    description: '',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/im2.avif',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '4',
+    title: 'Quit Porn Mvp',
+    description: 'A website where user can signup and get daily excersize does to get ride of porn',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/qp.png',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+  {
+    id: '5',
     title: ' AI Notes taking app',
     description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
     technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
@@ -15,7 +52,7 @@ const projects = [
     liveUrl: 'https://example.com'
   },
   {
-    id: '1',
+    id: '6',
     title: ' Ngl web app',
     description: 'A web app like Instagram’s NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
     technologies: ['Next.js', 'TypeScript', 'NoSQL', 'JavaScript'],
@@ -24,7 +61,7 @@ const projects = [
     liveUrl: 'https://example.com'
   },
   {
-    id: '2',
+    id: '7',
     title: 'Superclass',
     description: 'Founded A comprehensive e-learning platform that facilitates live interactive classes and offers an intuitive user experience',
     technologies: ['React', 'Next.js', 'Node.js', 'MongoDB'],
@@ -33,7 +70,7 @@ const projects = [
     liveUrl: 'https://example.com'
   },
   {
-    id: '3',
+    id: '8',
     title: 'chat app',
     description: 'A chat application where users can connect and start a quick conversation',
     technologies: ['React', 'socket.io', 'Firebase', 'node'],

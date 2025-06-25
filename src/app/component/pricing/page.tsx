@@ -11,16 +11,17 @@ import { Badge } from "@/components/ui/badge";
 
 const PricingSection = () => {
   const services = [
+     
     {
-      title: "SaaS Products",
-      price: "3500",
+      title: "Mvp/SaaS Products",
+      price: "1500",
       description: "Enterprise-grade SaaS solutions with cloud infrastructure, scalable architecture, and comprehensive features. Perfect for businesses seeking digital transformation.",
       badge: "Popular",
       className: "md:col-span-1"
     },
-    {
+   {
       title: "Mobile & Web Apps",
-      price: "5500",
+      price: "2000",
       description: "Full-stack web and mobile applications with responsive design, cross-platform compatibility, and seamless user experience across all devices.",
       badge: "Featured",
       className: "md:col-span-1"
