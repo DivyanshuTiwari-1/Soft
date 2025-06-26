@@ -2,6 +2,7 @@
 import React from 'react';
 import { IconType } from 'react-icons';
 import { FaRocket, FaChartLine, FaCogs, FaMoneyBillWave } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const benefits = [
   {
@@ -32,11 +33,11 @@ const Benefits: React.FC = () => {
       {benefits.map((benefit, index) => {
         const Icon: IconType = benefit.icon;
         return (
-          <div key={index} className="p-6 bg-gray-100 rounded-lg transition-transform duration-300 hover:transform hover:-translate-y-1 hover:bg-gray-200">
-            <Icon size={40} className="text-blue-500 mb-3" />
-            <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-            <p className="text-gray-600">{benefit.description}</p>
-          </div>
+          <motion.div key={index} className="p-6 card-dark transition-transform duration-300 hover:transform hover:-translate-y-1" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
+            <Icon size={40} className="text-white mb-3" />
+            <h3 className="text-xl font-semibold mb-2 text-white">{benefit.title}</h3>
+            <p className="text-gray-300">{benefit.description}</p>
+          </motion.div>
         );
       })}
     </div>

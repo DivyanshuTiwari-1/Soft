@@ -27,6 +27,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Graphical black and white background */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          {/* SVG pattern background */}
+          <svg width="100%" height="100%" className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="vercel-bg" width="80" height="80" patternUnits="userSpaceOnUse">
+                <rect width="80" height="80" fill="black" />
+                <circle cx="40" cy="40" r="1.5" fill="white" fillOpacity="0.07" />
+                <circle cx="0" cy="0" r="1.5" fill="white" fillOpacity="0.07" />
+                <circle cx="80" cy="80" r="1.5" fill="white" fillOpacity="0.07" />
+                <circle cx="0" cy="80" r="1.5" fill="white" fillOpacity="0.07" />
+                <circle cx="80" cy="0" r="1.5" fill="white" fillOpacity="0.07" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#vercel-bg)" />
+          </svg>
+          {/* Optional blurred white gradient overlays for extra depth */}
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full filter blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full filter blur-3xl" />
+        </div>
         {children}
       </body>
     </html>

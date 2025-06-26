@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from 'framer-motion';
 
 const PricingSection = () => {
   const services = [
@@ -57,11 +58,15 @@ const PricingSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {services.map((service, index) => (
-            <div 
-              key={index} 
-              className={`group relative ${service.className} transform transition-all duration-500 hover:-translate-y-1`}
+            <motion.div 
+              key={index}
+              className={`group relative ${service.className} card-dark transform transition-all duration-500 hover:-translate-y-1`}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-violet-400 to-blue-400 rounded-xl blur opacity-30 group-hover:opacity-20 transition duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/0 rounded-xl blur opacity-30 group-hover:opacity-20 transition duration-500" />
               <Card className="relative h-full border-2 border-purple-500/20 bg-background/60 backdrop-blur-sm">
                 <CardHeader>
                   <div className="flex justify-between items-center mb-4">
@@ -82,7 +87,7 @@ const PricingSection = () => {
                   </div>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

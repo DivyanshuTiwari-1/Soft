@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,9 +25,7 @@ const Navbar = () => {
             <a href="#services" className="text-gray-300 hover:text-purple-400 transition-colors">Services</a>
             <a href="#features" className="text-gray-300 hover:text-purple-400 transition-colors">Features</a>
             <a href="#benifit" className="text-gray-300 hover:text-purple-400 transition-colors">Benifit</a>
-            <a href="#cta" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:from-pink-500 hover:to-purple-500 transition">
-              Contact Us
-            </a>
+            <a href="#cta" className="btn-white ml-2">Contact Us</a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -47,9 +46,7 @@ const Navbar = () => {
               <a href="#services" className="text-gray-300 hover:text-purple-400 transition-colors">Services</a>
               <a href="#features" className="text-gray-300 hover:text-purple-400 transition-colors">Features</a>
               <a href="#about" className="text-gray-300 hover:text-purple-400 transition-colors">About</a>
-              <a href="#cta" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:from-pink-500 hover:to-purple-500 transition">
-                Contact Us
-              </a>
+              <a href="#cta" className="btn-white ml-2">Contact Us</a>
             </div>
           </div>
         )}

@@ -20,7 +20,7 @@ const ServiceCard = ({ title, description, icon, gradient }: {
       {/* Animated border */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-gradient-xy"></div>
       
-      <Card className="relative bg-black/60 backdrop-blur-sm border-0">
+      <Card className="card-dark relative">
         <CardContent className="p-6 h-full">
           <div className={`w-12 h-12 rounded-full ${gradient} flex items-center justify-center mb-4`}>
             {icon}

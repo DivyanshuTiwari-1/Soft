@@ -1,6 +1,7 @@
 // components/FeaturesSection.tsx
 "use client"
 import { Zap, CheckCircle, Users } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const FeaturesSection = () => {
   return (
@@ -11,17 +12,17 @@ const FeaturesSection = () => {
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
-            { icon: <Zap className="h-6 w-6 text-purple-500" />, title: "Fast Delivery", description: "Get your MVP to market quickly" },
-            { icon: <CheckCircle className="h-6 w-6 text-purple-500" />, title: "Quality Assured", description: "High-quality code and robust testing" },
-            { icon: <Users className="h-6 w-6 text-purple-500" />, title: "Expert Team", description: "Experienced developers and designers" }
+            { icon: <Zap className="h-6 w-6 text-white" />, title: "Fast Delivery", description: "Get your MVP to market quickly" },
+            { icon: <CheckCircle className="h-6 w-6 text-white" />, title: "Quality Assured", description: "High-quality code and robust testing" },
+            { icon: <Users className="h-6 w-6 text-white" />, title: "Expert Team", description: "Experienced developers and designers" }
           ].map((feature, index) => (
-            <div key={index} className="flex items-start space-x-4 p-6 bg-gray-800/50 backdrop-blur-sm rounded-lg shadow-lg border border-gray-700">
+            <motion.div key={index} className="flex items-start space-x-4 p-6 card-dark shadow-lg border border-white" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
               {feature.icon}
               <div>
                 <h3 className="font-semibold mb-2 text-white">{feature.title}</h3>
                 <p className="text-gray-300">{feature.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

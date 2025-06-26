@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ChevronLeft, ChevronRight} from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -54,7 +57,7 @@ const projects = [
   {
     id: '6',
     title: ' Ngl web app',
-    description: 'A web app like Instagram’s NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
+    description: 'A web app like Instagrams NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
     technologies: ['Next.js', 'TypeScript', 'NoSQL', 'JavaScript'],
     imageUrl: '/photo/ngl.png',
     githubUrl: 'https://github.com',
@@ -96,81 +99,99 @@ const ProjectShowcase = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 py-12 px-4">
+    <div className="min-h-screen bg-black py-12 px-4 relative overflow-hidden">
+      {/* Graphical background effects */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full filter blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full filter blur-3xl" />
+      </div>
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+        <h1 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
           Featured Projects
         </h1>
-
         <div className="relative">
-         {/* Navigation Buttons */}
-<button 
-  onClick={previousProject}
-  className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
-  aria-label="Previous project"
->
-  <ChevronLeft className="w-6 h-6" />
-</button>
-
-<button 
-  onClick={nextProject}
-  className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 p-2 rounded-full text-gray-300 hover:text-white hover:bg-gray-700 transition-all z-10"
-  aria-label="Next project"
->
-  <ChevronRight className="w-6 h-6" />
-</button>
-
-
+          {/* Navigation Buttons */}
+          <button 
+            onClick={previousProject}
+            className="absolute left-0 top-1/2 -translate-y-1/2 btn-white z-10 shadow-xl"
+            aria-label="Previous project"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button 
+            onClick={nextProject}
+            className="absolute right-0 top-1/2 -translate-y-1/2 btn-white z-10 shadow-xl"
+            aria-label="Next project"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
           {/* Project Cards Container */}
           <div className="relative overflow-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {projects.map((project) => (
-                <div 
-                  key={project.id}
-                  className="w-full flex-shrink-0 px-4"
-                >
-                  <Card className="bg-gray-800 border-gray-700 overflow-hidden transform transition-all duration-500">
-                    <CardHeader className="p-0">
-                      <div className="relative overflow-hidden">
-                        <img
-                          src={project.imageUrl}
-                          alt={project.title}
-                          className="w-full h-100 object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-800 to-transparent opacity-60" />
-                      </div>
-                    </CardHeader>
-                    <CardContent className="p-6">
-                      <CardTitle className="text-2xl mb-3 text-purple-300">
-                        {project.title}
-                      </CardTitle>
-                      <p className="text-gray-300 mb-4">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {project.technologies.map((tech) => (
-                          <Badge
-                            key={tech}
-                            variant="secondary"
-                            className="bg-gray-700 hover:bg-gray-600 text-purple-300"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                     
-                      
-                     
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
+              <AnimatePresence initial={false} mode="wait">
+                {projects.map((project, idx) => (
+                  idx === currentIndex && (
+                    <motion.div 
+                      key={project.id}
+                      className="w-full flex-shrink-0 px-4"
+                      initial={{ opacity: 0, y: 40 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -40 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <Card className="bg-zinc-900 border border-zinc-800 text-white shadow-lg rounded-xl overflow-hidden transform transition-all duration-500">
+                        <CardHeader className="p-0">
+                          <div className="relative w-full aspect-video overflow-hidden rounded-t-xl">
+                            <Image
+                              src={project.imageUrl}
+                              alt={project.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 700px"
+                              className="object-cover"
+                              priority={idx === currentIndex}
+                              placeholder="blur"
+                              blurDataURL="/photo/ai.png"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
+                          </div>
+                        </CardHeader>
+                        <CardContent className="p-6">
+                          <CardTitle className="text-2xl mb-3 text-white">
+                            {project.title}
+                          </CardTitle>
+                          <p className="text-gray-300 mb-4">
+                            {project.description}
+                          </p>
+                          <div className="flex flex-wrap gap-2 mb-6">
+                            {(project.technologies ?? []).map((tech) => (
+                              <Badge
+                                key={tech}
+                                variant="secondary"
+                                className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
+                              >
+                                {tech}
+                              </Badge>
+                            ))}
+                          </div>
+                          <div className="flex gap-4 mt-4">
+                            <Button asChild variant="outline" className="bg-white text-black border-black hover:bg-black hover:text-white hover:border-white">
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </Button>
+                            <Button asChild variant="outline" className="bg-white text-black border-black hover:bg-black hover:text-white hover:border-white">
+                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  )
+                ))}
+              </AnimatePresence>
             </div>
           </div>
-
           {/* Navigation Dots */}
           <div className="flex justify-center mt-6 gap-2">
             {projects.map((_, index) => (
@@ -179,8 +200,8 @@ const ProjectShowcase = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`w-2 h-2 rounded-full transition-all ${
                   currentIndex === index 
-                    ? 'bg-purple-400 w-4' 
-                    : 'bg-gray-600 hover:bg-gray-500'
+                    ? 'bg-white w-4' 
+                    : 'bg-gray-700 hover:bg-gray-500'
                 }`}
                 aria-label={`Go to project ${index + 1}`}
               />

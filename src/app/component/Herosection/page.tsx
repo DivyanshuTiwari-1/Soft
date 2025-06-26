@@ -1,6 +1,7 @@
 "use client";
 import { ArrowRight, X } from "lucide-react";
 import { useState } from "react";
+import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -14,7 +15,20 @@ const HeroSection = () => {
   };
 
   return (
-    <header className="relative pt-40 bg-gradient-to-r from-gray-900 to-black text-white py-24 lg:px-60">
+    <motion.header
+      className="relative pt-40 text-white py-24 lg:px-60"
+      style={{
+        backgroundColor: '#111',
+        backgroundImage: `
+          linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+        `,
+        backgroundSize: '32px 32px'
+      }}
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="container mx-auto  px-6">
         <div className="max-w-3xl">
           <h1 className="text-5xl font-bold mb-6">
@@ -26,7 +40,7 @@ const HeroSection = () => {
           </p>
           <button
             onClick={openPopup}
-            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-pink-500 hover:to-purple-500 transition flex items-center"
+            className="btn-white flex items-center"
           >
             Schedule a Call
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -58,7 +72,7 @@ const HeroSection = () => {
           </div>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 };
 

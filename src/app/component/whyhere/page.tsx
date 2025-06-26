@@ -51,7 +51,7 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
       whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
       className="relative"
     >
-      <Card className="bg-gray-900/50 backdrop-blur-xl border-gray-800 h-full overflow-hidden">
+      <Card className="card-dark bg-black/70 backdrop-blur-xl border-gray-800 h-full overflow-hidden">
         <CardContent className="p-6 relative z-10">
           <div className={`absolute top-0 left-0 w-full h-full opacity-10 bg-gradient-to-br ${feature.gradient}`} />
           <div className="flex flex-col items-center text-center space-y-4">

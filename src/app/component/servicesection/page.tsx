@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Rocket, Code2, Users } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const ServicesSection = () => {
   const sectionRef = useRef(null);
@@ -66,11 +67,15 @@ const ServicesSection = () => {
 
         <div className="grid md:grid-cols-3 gap-8 md:flex md:flex-row md:space-x-8 sm:grid-cols-1">
           {services.map((service, index) => (
-            <div
+            <motion.div
               key={index}
-              className={`service-card w-full opacity-0 translate-y-8 transition-all duration-700 ease-out ${service.delay}`}
+              className="service-card w-full card-dark opacity-0 translate-y-8 transition-all duration-700 ease-out"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group hover:border-purple-500 transition-all duration-300 hover:scale-105 bg-gray-800/50 backdrop-blur-sm border-gray-700 text-white hover:shadow-lg hover:shadow-purple-500/20">
+              <Card className="group hover:border-white transition-all duration-300 hover:scale-105 bg-black/60 backdrop-blur-sm border-gray-700 text-white hover:shadow-lg hover:shadow-white/20">
                 <CardHeader>
                   <div className="transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
                     {service.icon}
@@ -88,7 +93,7 @@ const ServicesSection = () => {
                   </p>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

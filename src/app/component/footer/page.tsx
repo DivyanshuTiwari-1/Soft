@@ -1,10 +1,11 @@
 "use client"
 import Link from "next/link";
 import {Twitter,Mail } from "react-feather";
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-12 border-t border-gray-800">
+    <motion.footer className="bg-black text-white py-12 border-t border-gray-800" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
@@ -72,7 +73,7 @@ const Footer = () => {
       <div className="container mx-auto text-center text-gray-400">
         <p>&copy; {new Date().getFullYear()} SoftAI. All rights reserved.</p>
       </div>
-    </footer>
+    </motion.footer>
     
   );
 };

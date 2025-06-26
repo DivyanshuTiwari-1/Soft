@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { motion } from 'framer-motion';
 
 const CTASection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const CTASection = () => {
   };
 
   return (
-    <section id="cta" className="py-20">
+    <motion.section id="cta" className="py-20 bg-black text-white" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-6">
           Ready to Build Your{" "}
@@ -24,13 +25,7 @@ const CTASection = () => {
         <p className="text-xl text-gray-300 mb-6">
           Schedule a call today and start your MVP development journey with us.
         </p>
-        <Button
-          onClick={toggleModal}
-          className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-pink-500 hover:to-purple-500 transition"
-        >
-          Schedule a Call
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <Button onClick={toggleModal} className="btn-white">Schedule a Call <ArrowRight className="ml-2 h-4 w-4" /></Button>
       </div>
 
       {/* Modal */}
@@ -65,7 +60,7 @@ const CTASection = () => {
           </div>
         </div>
       )}
-    </section>
+    </motion.section>
   );
 };
 
