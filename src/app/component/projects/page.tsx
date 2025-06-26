@@ -151,9 +151,7 @@ const ProjectShowcase = () => {
                               fill
                               sizes="(max-width: 768px) 100vw, 700px"
                               className="object-cover"
-                              priority={idx === currentIndex}
-                              placeholder="blur"
-                              blurDataURL="/photo/ai.png"
+                              priority={idx === 0}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
                           </div>
