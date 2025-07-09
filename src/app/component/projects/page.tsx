@@ -126,14 +126,14 @@ const ProjectShowcase = () => {
             <ChevronRight className="w-6 h-6" />
           </button>
           {/* Project Cards Container */}
-          <div className="relative overflow-hidden">
+          <div className=" overflow-x-hidden">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               <AnimatePresence initial={false} mode="wait">
                 {projects.map((project, idx) => (
-                  idx === currentIndex && (
+                (
                     <motion.div 
                       key={project.id}
                       className="w-full flex-shrink-0 px-4"
