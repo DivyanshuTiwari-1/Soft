@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Image from 'next/image';
 const teamData = [
   {
     photo: '/photo/Founder.png',
@@ -23,15 +23,18 @@ const TeamSection = () => (
           key={idx}
           className="bg-gray-800 rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl"
         >
-          <img
-            src={member.photo}
-            alt={member.name}
-            className="w-24 h-24 rounded-full mb-4 border-4 border-indigo-500 object-cover shadow-md"
-          />
+          <Image
+  src={member.photo}
+  alt={member.name}
+  width={96}
+  height={96}
+  className="w-24 h-24 rounded-full mb-4 border-4 border-indigo-500 object-cover shadow-md"
+/>
           <h3 className="text-xl font-semibold mb-1 text-white">{member.name}</h3>
           <p className="text-indigo-300">{member.role}</p>
         </div>
       ))}
+
     </div>
   </section>
 );
