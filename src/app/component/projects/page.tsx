@@ -175,12 +175,7 @@ const ProjectShowcase = () => {
                             ))}
                           </div>
                           <div className="flex gap-4 mt-4">
-                            <Button asChild variant="outline" className="bg-white text-black border-black hover:bg-black hover:text-white hover:border-white">
-                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
-                            </Button>
-                            <Button asChild variant="outline" className="bg-white text-black border-black hover:bg-black hover:text-white hover:border-white">
-                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo</a>
-                            </Button>
+                           
                           </div>
                         </CardContent>
                       </Card>
