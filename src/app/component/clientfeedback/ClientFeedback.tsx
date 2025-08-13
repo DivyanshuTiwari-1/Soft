@@ -40,7 +40,7 @@ const ClientFeedback = () => (
           />
           <h3 className="text-xl font-semibold mb-1 text-white">{feedback.name}</h3>
           <p className="text-indigo-400 mb-2">{feedback.designation} at <span className="font-medium text-gray-300">{feedback.company}</span></p>
-          <p className="text-gray-200 italic">"{feedback.message}"</p>
+          <p className="text-gray-200 italic">&quot;{feedback.message}&quot;</p>
         </div>
       ))}
     </div>
