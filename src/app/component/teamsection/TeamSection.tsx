@@ -11,30 +11,36 @@ const teamData = [
     name: 'Dheerap Singh',
     role: 'Frontend engineer',
   },
+  {
+    photo: '/photo/abhay.png',
+    name: 'Abhay bairagi',
+    role: 'Backend engineer',
+  },
  
 ];
 
 const TeamSection = () => (
   <section className="py-16 px-4 bg-gray-900">
-    <h2 className="text-3xl font-bold text-center mb-10 text-white">Meet Our Team</h2>
-    <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <h2 className="text-3xl font-bold text-center mb-16 text-white">Meet Our Team</h2>
+    <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
       {teamData.map((member, idx) => (
         <div
           key={idx}
-          className="bg-gray-800 rounded-xl shadow-lg p-8 flex flex-col items-center text-center transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+          className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col items-center text-center hover:scale-105 transition-transform duration-300 hover:shadow-2xl"
         >
-          <Image
-  src={member.photo}
-  alt={member.name}
-  width={96}
-  height={96}
-  className="w-24 h-24 rounded-full mb-4 border-4 border-indigo-500 object-cover shadow-md"
-/>
+          <div className="w-32 h-32 mb-4 rounded-full overflow-hidden border-4 border-indigo-500">
+            <Image
+              src={member.photo}
+              alt={member.name}
+              width={128}
+              height={128}
+              className="w-full h-full object-cover"
+            />
+          </div>
           <h3 className="text-xl font-semibold mb-1 text-white">{member.name}</h3>
           <p className="text-indigo-300">{member.role}</p>
         </div>
       ))}
-
     </div>
   </section>
 );

@@ -10,52 +10,43 @@ import Image from 'next/image';
 const projects = [
   {
     id: '1',
-    title: 'AI Ranking app',
-    description: 'A website where user can generate rankings base on real time data',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/ima.webp',
+    title: 'Flowrise',
+    description: 'A website where user can learn about productivity hacks ',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript',"shadcn",],
+    imageUrl: '/photo/flowrise.png',
     githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: 'https://flowrise-prismic.vercel.app/'
   },
   
   {
     id: '2',
-    title: 'AI notes taking app',
-    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/ai.png',
+    title: 'CRM-based dasahboards',
+    description: 'A CRM website for anayltical study of the accounts',
+    technologies: ['Next.js', 'Fastapi', 'MongoDB', 'JavaScript'],
+    imageUrl: '/photo/crm.png',
     githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: 'https://crm-dashboard-snowy.vercel.app/'
   },
   {
     id: '3',
-    title: 'Framer design',
-    description: '',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/im2.avif',
+    title: 'Coustmized Stripe Payment gateway',
+    description: 'coustmize the tradititon stripe payment gateway in popup style and in same url ',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'Stripe'],
+    imageUrl: '/photo/stripe.png',
     githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: 'https://strip-omega.vercel.app/'
   },
   {
     id: '4',
-    title: 'Quit Porn Mvp',
-    description: 'A website where user can signup and get daily excersize does to get ride of porn',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/qp.png',
+    title: ' AI Notes taking app',
+    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
+    technologies: ['React', 'python', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/ai.png',
     githubUrl: 'https://github.com',
     liveUrl: 'https://example.com'
   },
   {
     id: '5',
-    title: ' AI Notes taking app',
-    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/ai.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-  {
-    id: '6',
     title: ' Ngl web app',
     description: 'A web app like Instagrams NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
     technologies: ['Next.js', 'TypeScript', 'NoSQL', 'JavaScript'],
@@ -64,23 +55,38 @@ const projects = [
     liveUrl: 'https://example.com'
   },
   {
-    id: '7',
+    id: '6',
     title: 'Superclass',
     description: 'Founded A comprehensive e-learning platform that facilitates live interactive classes and offers an intuitive user experience',
     technologies: ['React', 'Next.js', 'Node.js', 'MongoDB'],
     imageUrl: '/photo/super.png',
     githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: 'https://superclasses.site/'
   },
   {
-    id: '8',
-    title: 'chat app',
-    description: 'A chat application where users can connect and start a quick conversation',
-    technologies: ['React', 'socket.io', 'Firebase', 'node'],
-    imageUrl: '/photo/chat.png',
+    id: '7',
+    title: 'Framer design',
+    description: '',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/im2.avif',
     githubUrl: 'https://github.com',
     liveUrl: 'https://example.com'
-  }
+  },
+   
+  {
+    id: '8',
+    title: 'AI Ranking app',
+    description: 'A website where user can generate rankings base on real time data',
+    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
+    imageUrl: '/photo/ima.webp',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
+  },
+
+
+
+
+
 ];
 
 const ProjectShowcase = () => {
@@ -175,8 +181,21 @@ const ProjectShowcase = () => {
                             ))}
                           </div>
                           <div className="flex gap-4 mt-4">
-                           
-                          </div>
+                          
+ 
+  <a
+    href={project.liveUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+  >
+    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+    </svg>
+    Live Demo
+  </a>
+</div>
+                       
                         </CardContent>
                       </Card>
                     </motion.div>

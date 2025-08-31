@@ -33,7 +33,7 @@ const MVPWebsite = () => {
      
 
      <ServicesSection/>
-     <ClientFeedback/>
+     
      <TeamSection/>
      <PricingSection/>
      <FeaturesSection />
