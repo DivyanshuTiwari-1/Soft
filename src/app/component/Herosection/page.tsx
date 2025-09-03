@@ -33,7 +33,7 @@ const HeroSection = () => {
         <div className="max-w-3xl">
           <h1 className="text-5xl font-bold mb-6">
             Transform Your Ideas into{" "}
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Success</span>
+            <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Product</span>
           </h1>
           <p className="text-xl mb-8 text-gray-300">
             We help businesses build scalable MVPs and turn innovative ideas into market-ready solutions.
