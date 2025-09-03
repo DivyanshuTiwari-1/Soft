@@ -1,104 +1,113 @@
 "use client"
 import React from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const PricingSection = () => {
-  const services = [
-     
+  const pricingPlans = [
     {
-      title: "Mvp/SaaS Products",
-      price: "1500",
-      description: "Enterprise-grade SaaS solutions with cloud infrastructure, scalable architecture, and comprehensive features. Perfect for businesses seeking digital transformation.",
-      badge: "Popular",
-      className: "md:col-span-1"
-    },
-   {
-      title: "Mobile & Web Apps",
-      price: "2000",
-      description: "Full-stack web and mobile applications with responsive design, cross-platform compatibility, and seamless user experience across all devices.",
-      badge: "Featured",
-      className: "md:col-span-1"
-    },
-    {
-      title: "AI Apps",
-      price: "2500",
-      description: "Smart applications powered by machine learning, featuring data analytics, predictive modeling, and intelligent automation for next-gen solutions.",
-      badge: "New",
-      className: "md:col-span-1"
+      name: "MVP",
+      price: "$2500",
+      period: "/month",
+      description: "Quaickly vaidate your idea within 20 days",
+      features: [
+        "Focus on core fetures",
+        "Complete FUll stack development",
+        "Build for vaildating a idea",
+        "launch ready"
+      ],
+      popular: false,
+      buttonVariant: "outline"
     },
     {
-      title: "Maintenance",
-      price: "1000",
-      description: "Comprehensive maintenance including 24/7 monitoring, security patches, performance optimization, and regular updates to keep your application running smoothly.",
-      badge: "Essential",
-      className: "md:col-span-3"
+      name: "SaaS",
+      price: "$5000",
+      period: "/month",
+      description: "Best for building a scalable app ",
+      features: [
+        "Complete end to end features",
+        "Complete FUll stack developments",
+        "Scalable architecture",
+        "Multiple revision",
+       
+      ],
+      popular: true,
+      buttonVariant: "default"
+    },
+    {
+      name: "Framer+ SaaS",
+      price: "$7500",
+      period: "/month",
+      description: "Best for building a scalable app  along with framer design ",
+      features: [
+        "Framer devlopment",
+        "Full stack development ",
+        "Scalable architecture",
+        "Multiple revision",
+        
+      ],
+      popular: false,
+      buttonVariant: "outline"
     }
   ];
 
   return (
-    <section className="py-20 min-h-screen bg-gradient-to-b from-background/80 to-background">
+    <section className="py-20 bg-background">
       <div className="container px-4 mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold">
-            Pricing & {" "}
-            <span className="bg-gradient-to-r from-purple-400 via-violet-400 to-blue-500 bg-clip-text text-transparent">
-              Technologies
-            </span>
-          </h1>
-          <p className="text-muted-foreground">Choose the perfect plan for your needs</p>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4">Simple, transparent pricing</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Choose the perfect plan for your needs. No hidden fees, cancel anytime.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {services.map((service, index) => (
-            <motion.div 
-              key={index}
-              className={`group relative ${service.className} card-dark transform transition-all duration-500 hover:-translate-y-1`}
-              initial={{ opacity: 0, y: 40 }}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {pricingPlans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: index * 0.1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`relative rounded-2xl border bg-card p-6 shadow-sm transition-all hover:shadow-md ${
+                plan.popular ? 'ring-2 ring-primary' : ''
+              }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-white/10 via-white/5 to-white/0 rounded-xl blur opacity-30 group-hover:opacity-20 transition duration-500" />
-              <Card className="relative h-full border-2 border-purple-500/20 bg-background/60 backdrop-blur-sm">
-                <CardHeader>
-                  <div className="flex justify-between items-center mb-4">
-                    <Badge variant="secondary" className="bg-purple-500/10 text-purple-400 hover:bg-purple-500/20">
-                      {service.badge}
-                    </Badge>
+              {plan.popular && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="bg-primary text-primary-foreground text-xs font-medium px-3 py-1 rounded-full">
+                    Most Popular
+                  </span>
+                </div>
+              )}
+              
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  <span className="text-muted-foreground">{plan.period}</span>
+                </div>
+                <p className="text-muted-foreground mt-2">{plan.description}</p>
+              </div>
+              
+              <div className="space-y-4 mb-8">
+                {plan.features.map((feature, i) => (
+                  <div key={i} className="flex items-center">
+                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                    <span>{feature}</span>
                   </div>
-                  <CardTitle className="text-2xl font-bold">{service.title}</CardTitle>
-                  <CardDescription className="min-h-[80px] text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-baseline space-x-2">
-                    <span className="text-xl text-muted-foreground">$</span>
-                    <span className="text-4xl font-bold">{service.price}</span>
-                    <span className="text-muted-foreground ml-2">starting at</span>
-                  </div>
-                </CardContent>
-              </Card>
+                ))}
+              </div>
+           
             </motion.div>
           ))}
         </div>
+        
+        <div className="mt-16 text-center text-sm text-muted-foreground">
+          <p>Need a custom solution? <a href="#contact" className="text-primary hover:underline">Contact our sales team</a></p>
+        </div>
       </div>
-
-      <style jsx>{`
-        @keyframes border-flow {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
     </section>
   );
 };
