@@ -11,7 +11,6 @@ import CTASection from './component/cta/page';
 import Footer from './component/footer/page';
 import FeaturesSection from './component/feature section/page';
 import WhyFeatures from './component/whyhere/page';
-import ClientFeedback from './component/clientfeedback/ClientFeedback';
 import PricingSection from './component/pricing/page';
 import ProjectShowcase from './component/projects/page';
 import TeamSection from './component/teamsection/TeamSection';

@@ -1,7 +1,8 @@
 "use client"
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
-
+import Image from 'next/image';
+import logo from '/public/photo/logo.jpeg';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,13 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <img src="/photo/logo.jpeg" className="text-white w-7 h-7 font-bold text-xl rounded-full  border-pink-400"></img>
+                <Image 
+                  src={logo} 
+                  alt="SoftAI Logo"
+                  width={28}
+                  height={28}
+                  className="text-white w-7 h-7 font-bold text-xl rounded-full  border-pink-400"
+                />
               </div>
               <span className=" md:block text-lg font-semibold text-gray-300">SoftAI</span>
             </div>
