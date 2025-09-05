@@ -7,8 +7,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
 const projects = [
-  {
+{
     id: '1',
+    title: 'CRM-based dasahboards',
+    description: 'A CRM website for anayltical study of the accounts',
+    technologies: ['Next.js', 'Fastapi', 'MongoDB', 'JavaScript'],
+    imageUrl: '/photo/crm.png',
+    githubUrl: 'https://github.com',
+    liveUrl: 'https://crm-dashboard-snowy.vercel.app/'
+  },
+  
+  {
+    id: '2',
     title: 'Flowrise',
     description: 'A website where user can learn about productivity hacks ',
     technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript',"shadcn",],
@@ -17,15 +27,7 @@ const projects = [
     liveUrl: 'https://flowrise-prismic.vercel.app/'
   },
   
-  {
-    id: '2',
-    title: 'CRM-based dasahboards',
-    description: 'A CRM website for anayltical study of the accounts',
-    technologies: ['Next.js', 'Fastapi', 'MongoDB', 'JavaScript'],
-    imageUrl: '/photo/crm.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://crm-dashboard-snowy.vercel.app/'
-  },
+  
   {
     id: '3',
     title: 'Coustmized Stripe Payment gateway',
