@@ -1,23 +1,43 @@
 import React from 'react';
 import Image from 'next/image';
-const teamData = [
+const teamData= [
   {
-    photo: '/photo/Founder.png',
-    name: 'Divyanshu Tiwari',
-    role: 'Founder,Full stack engineer',
+    photo: "/photo/Founder.png",
+    name: "Divyanshu Tiwari",
+    role: "Founder, Team Lead",
   },
   {
-    photo: '/photo/dheerap.jpg',
-    name: 'Dheerap Singh',
-    role: 'Frontend engineer',
+    photo: "/photo/kishan.jpg",
+    name: "Patell Kishan",
+    role: "Team Lead - Expert Mobile App Development (8+ YOE) | Flutter | Java | Android | Kotlin",
   },
   {
-    photo: '/photo/abhay.png',
-    name: 'Abhay bairagi',
-    role: 'Backend engineer',
+    photo: "/photo/bala.jpg",
+    name: "Bala Subrahmanyam Reddy",
+    role: "Senior Full Stack Developer (4+ YOE) | Node.js | MongoDB | Express.js | React.js | Next.js | TypeScript",
   },
- 
+  {
+    photo: "/photo/aharsh.jpg",
+    name: "Aharsh Singh",
+    role: "Full Stack Engineer (3+ YOE) | Node.js | MongoDB | Express.js | React.js | Next.js | TypeScript",
+  },
+  {
+    photo: "/photo/dheerap.jpg",
+    name: "Dheerap Singh",
+    role: "Frontend Engineer (3+ YOE) | React.js | Next.js | Tailwind | HTML | CSS",
+  },
+  {
+    photo: "/photo/abhay.png",
+    name: "Abhay Bairagi",
+    role: "Backend Engineer (3+ YOE) | Node.js | MongoDB | Express.js | React.js | Next.js | TypeScript",
+  },
+  // {
+  //   photo: "/photo/ap.jpg",
+  //   name: "Akpobasa Victor",
+  //   role: "Frontend Developer (3+ YOE) | React.js | Next.js | Tailwind | HTML | CSS",
+  // },
 ];
+
 
 const TeamSection = () => (
   <section className="py-16 px-4 bg-gray-900">
