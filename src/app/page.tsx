@@ -13,7 +13,6 @@ import FeaturesSection from './component/feature section/page';
 import WhyFeatures from './component/whyhere/page';
 import PricingSection from './component/pricing/page';
 import ProjectShowcase from './component/projects/page';
-import TeamSection from './component/teamsection/TeamSection';
 const MVPWebsite = () => {
  
 
@@ -33,7 +32,7 @@ const MVPWebsite = () => {
 
      <ServicesSection/>
      
-     <TeamSection/>
+     
      <PricingSection/>
      <FeaturesSection />
      
