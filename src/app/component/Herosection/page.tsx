@@ -42,8 +42,18 @@ const HeroSection = () => {
   }, [isPopupOpen]);
 
   return (
-    <section className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-white relative overflow-hidden">
+      {/* Dotted Grid Background */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `radial-gradient(circle, #e5e7eb 1px, transparent 1px)`,
+          backgroundSize: '20px 20px',
+          backgroundPosition: '0 0, 10px 10px'
+        }}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="pt-32 pb-16 text-center lg:pt-40">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl font-cal font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">

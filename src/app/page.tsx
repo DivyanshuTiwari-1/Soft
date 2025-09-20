@@ -6,11 +6,11 @@ import React from 'react';
 import Navbar from './component/Navbar/page';
 import ServicesScroll from './component/ServiceScrool/page';
 import HeroSection from './component/Herosection/page';
-import ServicesSection from './component/servicesection/page';
+
 import CTASection from './component/cta/page';
 import Footer from './component/footer/page';
 import FeaturesSection from './component/feature section/page';
-import WhyFeatures from './component/whyhere/page';
+
 import PricingSection from './component/pricing/page';
 import ProjectShowcase from './component/projects/page';
 const MVPWebsite = () => {
