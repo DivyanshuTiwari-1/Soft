@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [
@@ -82,19 +81,9 @@ const ProjectShowcase = () => {
     );
   };
 
-  const previousProject = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? filteredProjects.length - 1 : prevIndex - 1
-    );
-  };
-
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     setCurrentIndex(0);
-  };
-
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
   };
 
   // Auto-scroll effect
@@ -114,7 +103,7 @@ const ProjectShowcase = () => {
         setIntervalId(null);
       }
     }
-  }, [isPlaying, filteredProjects.length, currentIndex]);
+  }, [isPlaying, filteredProjects.length, nextProject, intervalId]);
 
   // Reset auto-scroll when category changes
   useEffect(() => {
@@ -122,14 +111,14 @@ const ProjectShowcase = () => {
       clearInterval(intervalId);
     }
     setCurrentIndex(0);
-  }, [selectedCategory]);
+  }, [selectedCategory, intervalId]);
 
   // Cleanup on unmount
   useEffect(() => {
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, []);
+  }, [intervalId]);
 
   if (!currentProject) return null;
 
