@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
 
           {/* Footer Sections */}
-          {footerSections.map((section, index) => (
+          {footerSections.map((section) => (
             <div key={section.title}>
               <h4 className="text-sm font-semibold text-gray-900 mb-4">
                 {section.title}
@@ -96,7 +96,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">
-              © {currentYear} SoftAI. All rights reserved.
+              {currentYear} SoftAI. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link 

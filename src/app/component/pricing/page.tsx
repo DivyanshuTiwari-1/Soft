@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { Check, Star } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
@@ -66,7 +66,7 @@ const PricingSection = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {pricingPlans.map((plan, index) => (
+          {pricingPlans.map((plan) => (
             <div
               key={plan.name}
               className={`relative bg-white rounded-2xl shadow-sm border ${
@@ -125,7 +125,7 @@ const PricingSection = () => {
           <p className="text-gray-600">
             Need something custom?{' '}
             <a href="#contact" className="font-medium text-gray-900 underline">
-              Let's talk
+              Let&apos;s talk
             </a>
           </p>
         </div>
