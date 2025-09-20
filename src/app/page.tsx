@@ -4,7 +4,7 @@ import React from 'react';
 // Extend the Window interface to include the calendar property
 
 import Navbar from './component/Navbar/page';
-
+import ServicesScroll from './component/ServiceScrool/page';
 import HeroSection from './component/Herosection/page';
 import ServicesSection from './component/servicesection/page';
 import CTASection from './component/cta/page';
@@ -27,15 +27,11 @@ const MVPWebsite = () => {
 
       {/* Hero Section */}
       <HeroSection />
+      <ServicesScroll/>
+      <FeaturesSection />
       <ProjectShowcase/>
-      <WhyFeatures/>
-     
-
-     <ServicesSection/>
-     
-     <TeamSection/>
      <PricingSection/>
-     <FeaturesSection />
+     
      
      
       <CTASection/>

@@ -1,20 +1,38 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Plus Jakarta Sans - Similar to Cal.com's aesthetic
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-cal-sans",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Inter as a fallback/secondary font
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "SoftAI",
-  description: "",
+  title: "SoftAI – Software Agency for MVPs, SaaS & AI Apps",
+  description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+  openGraph: {
+    title: "SoftAI – Software Agency for MVPs, SaaS & AI Apps",
+    description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+    images: ["/photo/Softtt.jpg"],
+    url: "https://softai.site/",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SoftAI – Software Agency for MVPs, SaaS & AI Apps",
+    description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+    images: ["/photo/Softtt.jpg"],
+  },
 };
 
 export default function RootLayout({
@@ -24,44 +42,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-  <head>
-  <title>SoftAI – Software Agency for MVPs, SaaS & AI Apps</title>
-  <meta name="description" content="We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster." />
-
-  <meta property="og:title" content="SoftAI – Software Agency for MVPs, SaaS & AI Apps" />
-  <meta property="og:description" content="We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster." />
-  <meta property="og:image" content="/photo/Softtt.jpg" />
-  <meta property="og:url" content="https://softai.site/" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="SoftAI – Software Agency for MVPs, SaaS & AI Apps" />
-  <meta name="twitter:description" content="We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster." />
-  <meta name="twitter:image" content="/photo/Softtt.jpg" />
-</head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jakartaSans.variable} ${inter.variable} font-cal antialiased text-base leading-relaxed`}
       >
-        {/* Graphical black and white background */}
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          {/* SVG pattern background */}
-          <svg width="100%" height="100%" className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="vercel-bg" width="80" height="80" patternUnits="userSpaceOnUse">
-                <rect width="80" height="80" fill="black" />
-                <circle cx="40" cy="40" r="1.5" fill="white" fillOpacity="0.07" />
-                <circle cx="0" cy="0" r="1.5" fill="white" fillOpacity="0.07" />
-                <circle cx="80" cy="80" r="1.5" fill="white" fillOpacity="0.07" />
-                <circle cx="0" cy="80" r="1.5" fill="white" fillOpacity="0.07" />
-                <circle cx="80" cy="0" r="1.5" fill="white" fillOpacity="0.07" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#vercel-bg)" />
-          </svg>
-          {/* Optional blurred white gradient overlays for extra depth */}
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full filter blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full filter blur-3xl" />
-        </div>
+        {/* Clean grid background for white theme */}
+        <div 
+          className="fixed inset-0 -z-10 pointer-events-none bg-white"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px)
+            `,
+            backgroundSize: '24px 24px'
+          }}
+        />
+        
         {children}
       </body>
     </html>

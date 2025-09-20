@@ -1,10 +1,8 @@
-// components/CTASection.tsx
 "use client";
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { motion } from 'framer-motion';
+import { ArrowRight, X } from "lucide-react";
+import Cal from "@calcom/embed-react";
 
 const CTASection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,53 +12,57 @@ const CTASection = () => {
   };
 
   return (
-    <motion.section id="cta" className="py-20 bg-black text-white" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-3xl font-bold mb-6">
-          Ready to Build Your{" "}
-          <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Future?
-          </span>
-        </h2>
-        <p className="text-xl text-gray-300 mb-6">
-          Schedule a call today and start your MVP development journey with us.
-        </p>
-        <Button onClick={toggleModal} className="btn-white">Schedule a Call <ArrowRight className="ml-2 h-4 w-4" /></Button>
+    <section id="cta" className="bg-gray-50 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
+            Ready to Build Your Future?
+          </h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600 max-w-2xl mx-auto">
+            Schedule a call today and start your MVP development journey with our expert team.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Button
+              onClick={toggleModal}
+              className="bg-black hover:bg-gray-800 text-white px-6 py-3 text-base font-medium"
+            >
+              Schedule a Call
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+         
+          </div>
+        </div>
       </div>
 
       {/* Modal */}
       {isModalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-          onClick={toggleModal} // Close modal on outside click
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+          onClick={toggleModal}
         >
           <div
-            className="bg-white rounded-lg shadow-lg w-full max-w-2xl p-6 relative"
-            onClick={(e) => e.stopPropagation()} // Prevent modal close on content click
+            className="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
           >
-            <button
-              onClick={toggleModal}
-              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-            >
-              &times;
-            </button>
-            <h3 className="text-xl font-semibold mb-4">
-              Schedule a Call with Us
-            </h3>
-            <div className="relative w-full h-[600px]">
-              <iframe
-                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3AMo30R4iaqZzv22L6QpiDL7vY3sOWVB5X7NFUwfPQar-9PST6NsdonC_UVQnML1jbVMfLI3Qw?gv=true"
-                style={{ border: "0" }}
-                width="100%"
-                height="100%"
-                frameBorder="0"
-                allowFullScreen
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
+              <h3 className="text-xl font-semibold text-gray-900">
+                Schedule a Discovery Call
+              </h3>
+              <Button variant="ghost" size="icon" onClick={toggleModal}>
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+            <div className="p-6">
+              <Cal
+                calLink="divyanshu-tiwari-4rauop/30min"
+                style={{width:"100%",height:"100%",overflow:"scroll"}}
+                config={{layout: 'month_view'}}
               />
             </div>
           </div>
         </div>
       )}
-    </motion.section>
+    </section>
   );
 };
 

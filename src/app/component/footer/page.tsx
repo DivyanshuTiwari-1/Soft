@@ -1,80 +1,121 @@
-"use client"
+"use client";
 import Link from "next/link";
-import {Twitter,Mail } from "react-feather";
-import { motion } from 'framer-motion';
+import { Twitter, Mail } from "react-feather";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const footerSections = [
+    {
+      title: "Services",
+      links: [
+        { name: "MVP Development", href: "#services" },
+        { name: "Custom Software", href: "#services" },
+        { name: "Technical Consulting", href: "#services" },
+        { name: "Support & Maintenance", href: "#services" }
+      ]
+    },
+    {
+      title: "Company",
+      links: [
+        { name: "About Us", href: "#about" },
+        { name: "Our Team", href: "#team" },
+        { name: "Careers", href: "#careers" },
+        { name: "Contact", href: "#contact" }
+      ]
+    },
+    {
+      title: "Resources",
+      links: [
+        { name: "Blog", href: "#blog" },
+        { name: "Case Studies", href: "#projects" },
+        { name: "Pricing", href: "#pricing" },
+        { name: "FAQ", href: "#faq" }
+      ]
+    }
+  ];
+
   return (
-    <motion.footer className="bg-black text-white py-12 border-t border-gray-800" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div>
-           
-            <h3 className="font-bold text-lg mb-4 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">SoftAI</h3>
-            <p className="text-gray-400">Building successful products through innovation and expertise.</p>
+    <footer className="bg-white border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          {/* Company Info */}
+          <div className="md:col-span-2">
+            <div className="flex items-center space-x-3 mb-4">
+              <h3 className="text-xl font-cal font-semibold text-gray-900">
+                SoftAI
+              </h3>
+            </div>
+            <p className="text-gray-600 mb-6 max-w-md">
+              Building successful products through innovation and expertise. 
+              We transform ideas into market-ready solutions.
+            </p>
+            <div className="flex space-x-4">
+              <Link 
+                href="https://x.com/softai_site?s=08" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <Twitter className="h-5 w-5" />
+                <span className="sr-only">Twitter</span>
+              </Link>
+              <Link 
+                href="mailto:contactsoftai@gmail.com"
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <Mail className="h-5 w-5" />
+                <span className="sr-only">Email</span>
+              </Link>
+            </div>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="https://example.com/mvp-development">MVP Development</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="https://example.com/custom-software">Custom Software</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="https://example.com/consulting">Consulting</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="https://example.com/support">Support</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="/">About</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="/">Careers</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="/">Blog</Link>
-              </li>
-              <li className="hover:text-purple-400 transition-colors cursor-pointer">
-                <Link href="/">Contact</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Connect</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li className="flex items-center space-x-2">
-                <Link href="https://x.com/softai_site?s=08" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2">
-                  <Twitter className="h-5 w-5 text-gray-400 hover:text-purple-400 transition-colors cursor-pointer" />
-                  <span>Twitter</span>
-                </Link>
-              </li>
-              
-              <li className="flex items-center space-x-2">
-                <Link href="mailto:contactsoftai@gmail.com" className="flex items-center space-x-2">
-                  <Mail className="h-5 w-5 text-gray-400 hover:text-purple-400 transition-colors cursor-pointer" />
-                  <span>Email</span>
-                </Link>
-              </li>
-             
-            
-            </ul>
+
+          {/* Footer Sections */}
+          {footerSections.map((section, index) => (
+            <div key={section.title}>
+              <h4 className="text-sm font-semibold text-gray-900 mb-4">
+                {section.title}
+              </h4>
+              <ul className="space-y-3">
+                {section.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-gray-600 hover:text-gray-900 transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Section */}
+        <div className="mt-16 pt-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-500">
+              © {currentYear} SoftAI. All rights reserved.
+            </p>
+            <div className="flex space-x-6 mt-4 md:mt-0">
+              <Link 
+                href="#privacy" 
+                className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                Privacy Policy
+              </Link>
+              <Link 
+                href="#terms" 
+                className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
-       
       </div>
-      <div className="container mx-auto text-center text-gray-400">
-        <p>&copy; {new Date().getFullYear()} SoftAI. All rights reserved.</p>
-      </div>
-    </motion.footer>
-    
+    </footer>
   );
 };
 

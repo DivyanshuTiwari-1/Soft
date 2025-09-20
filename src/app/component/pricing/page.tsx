@@ -1,129 +1,134 @@
-"use client"
+"use client";
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Check, Zap, Sparkles, Shield } from 'lucide-react';
+import { Check, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 
 const PricingSection = () => {
   const pricingPlans = [
     {
       name: "MVP",
       price: "$2,500",
-      description: "Quickly validate your idea within 20 days",
+      description: "Perfect for validating your idea quickly",
       features: [
-        "Focus on core features",
-        "Complete Full stack development",
-        "Built for validating an idea",
-        "Launch ready"
+        "Core features development",
+        "Full-stack implementation",
+        "20-day delivery",
+        "Launch-ready product",
+        "Basic support"
       ],
       popular: false,
-      buttonVariant: "outline" as const,
-      icon: <Zap className="h-6 w-6 text-purple-500" />
+      cta: "Get Started"
     },
     {
       name: "SaaS",
       price: "$5,000",
-      description: "Ideal for building a scalable application",
+      description: "Comprehensive solution for scalable applications",
       features: [
-        "Complete end-to-end features",
-        "Full stack development",
+        "End-to-end feature development",
+        "Full-stack implementation",
         "Scalable architecture",
-        "Multiple revisions"
+        "Multiple revision rounds",
+        "Priority support",
+        "Performance optimization"
       ],
       popular: true,
-      buttonVariant: "default" as const,
-      icon: <Sparkles className="h-6 w-6 text-pink-500" />
+      cta: "Start Building"
     },
     {
       name: "Framer + SaaS",
       price: "$7,500",
-      description: "Complete solution with Framer design integration",
+      description: "Complete solution with premium design integration",
       features: [
-        "Framer development",
-        "Full stack development",
-        "Scalable architecture",
-        "Multiple revisions",
-        "Premium support"
+        "Custom Framer design",
+        "Full-stack development",
+        "Advanced scalability",
+        "Unlimited revisions",
+        "Premium support",
+        "SEO optimization",
+        "Analytics integration"
       ],
       popular: false,
-      buttonVariant: "outline" as const,
-      icon: <Shield className="h-6 w-6 text-blue-500" />
+      cta: "Go Premium"
     }
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-black relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full filter blur-3xl" />
-      </div>
-
+    <section id="pricing" className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
-            Simple, Transparent <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Pricing</span>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
+            Simple, Transparent Pricing
           </h2>
-          <p className="text-lg text-gray-400">
-            Choose the perfect plan that fits your business needs. No hidden fees, cancel anytime.
+          <p className="mt-4 text-lg leading-6 text-gray-600 max-w-2xl mx-auto">
+            Choose the perfect plan for your project. Fixed prices, no hidden fees.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid gap-8 md:grid-cols-3 lg:gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           {pricingPlans.map((plan, index) => (
-            <motion.div
+            <div
               key={plan.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className={`relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/20 ${
+              className={`relative bg-white rounded-2xl shadow-sm border ${
                 plan.popular 
-                  ? 'bg-gradient-to-br from-gray-900 to-gray-800 border border-purple-500/30' 
-                  : 'bg-gray-900/50 backdrop-blur-sm border border-gray-800 hover:border-purple-500/50'
-              }`}
+                  ? 'border-gray-900 ring-1 ring-gray-900' 
+                  : 'border-gray-200'
+              } p-8 hover:shadow-lg transition-shadow`}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-gradient-to-r from-purple-600 to-pink-600 text-white text-xs font-semibold px-4 py-1 rounded-bl-lg">
-                  Most Popular
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-gray-900 text-white px-4 py-1 rounded-full text-sm font-medium">
+                    Most Popular
+                  </Badge>
                 </div>
               )}
               
-              <div className="p-8 flex flex-col h-full">
-                <div className="flex items-center mb-6">
-                  <div className="p-2 rounded-lg bg-gray-800/50 mr-4">
-                    {plan.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">{plan.name}</h3>
+              <div className="text-center">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  {plan.description}
+                </p>
+                <div className="mb-8">
+                  <span className="text-4xl font-bold text-gray-900">
+                    {plan.price}
+                  </span>
                 </div>
-                
-                <div className="mb-8 flex-grow">
-                  <div className="flex items-baseline mb-2">
-                    <span className="text-4xl font-extrabold text-white">{plan.price}</span>
-                  </div>
-                  <p className="text-gray-400 mb-6">{plan.description}</p>
-                  
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-start">
-                        <Check className="h-5 w-5 text-purple-500 mt-0.5 mr-2 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-              
               </div>
-            </motion.div>
+              
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-start">
+                    <Check className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
+                    <span className="text-gray-700">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              
+              <Button
+                className={`w-full ${
+                  plan.popular
+                    ? 'bg-gray-900 hover:bg-gray-800 text-white'
+                    : 'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300'
+                }`}
+              >
+                {plan.cta}
+              </Button>
+            </div>
           ))}
         </div>
-       
+
+        <div className="mt-16 text-center">
+          <p className="text-gray-600">
+            Need something custom?{' '}
+            <a href="#contact" className="font-medium text-gray-900 underline">
+              Let's talk
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );

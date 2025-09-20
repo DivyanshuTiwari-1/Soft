@@ -1,28 +1,52 @@
-// components/FeaturesSection.tsx
-"use client"
+"use client";
 import { Zap, CheckCircle, Users } from "lucide-react";
-import { motion } from 'framer-motion';
 
 const FeaturesSection = () => {
+  const features = [
+    {
+      icon: <Zap className="h-6 w-6 text-gray-900" />,
+      title: "Fast Delivery",
+      description: "Get your MVP to market quickly with our streamlined development process"
+    },
+    {
+      icon: <CheckCircle className="h-6 w-6 text-gray-900" />,
+      title: "Quality Assured",
+      description: "High-quality code with comprehensive testing and best practices"
+    },
+    {
+      icon: <Users className="h-6 w-6 text-gray-900" />,
+      title: "Expert Team",
+      description: "Work with experienced developers and designers who understand your vision"
+    }
+  ];
+
   return (
-    <section id="features" className="bg-black/50 backdrop-blur-sm py-20">
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Why Choose <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent"> Us</span>
-        </h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { icon: <Zap className="h-6 w-6 text-white" />, title: "Fast Delivery", description: "Get your MVP to market quickly" },
-            { icon: <CheckCircle className="h-6 w-6 text-white" />, title: "Quality Assured", description: "High-quality code and robust testing" },
-            { icon: <Users className="h-6 w-6 text-white" />, title: "Expert Team", description: "Experienced developers and designers" }
-          ].map((feature, index) => (
-            <motion.div key={index} className="flex items-start space-x-4 p-6 card-dark shadow-lg border border-white" initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }}>
-              {feature.icon}
-              <div>
-                <h3 className="font-semibold mb-2 text-white">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
+    <section id="features" className="bg-white py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
+            Why Choose Us
+          </h2>
+          <p className="mt-4 text-lg leading-6 text-gray-600 max-w-2xl mx-auto">
+            We combine technical expertise with business understanding to deliver exceptional results
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
+          {features.map((feature, index) => (
+            <div key={index} className="text-center lg:text-left">
+              <div className="flex items-center justify-center lg:justify-start">
+                <div className="flex items-center justify-center w-12 h-12 bg-gray-100 rounded-lg mb-4">
+                  {feature.icon}
+                </div>
               </div>
-            </motion.div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {feature.title}
+              </h3>
+              <p className="text-gray-600 leading-6">
+                {feature.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>

@@ -1,152 +1,57 @@
-"use client"
-import React, { useEffect, useRef } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
+import React from 'react';
 import { Rocket, Code2, Users } from "lucide-react";
-import { motion } from 'framer-motion';
 
 const ServicesSection = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-50px',
-      threshold: 0.15
-    };
-
-    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-          // Add stagger effect class
-          entry.target.classList.add('stagger-animate');
-        } else {
-          // Reset animation when out of view
-          entry.target.classList.remove('animate-in');
-          entry.target.classList.remove('stagger-animate');
-        }
-      });
-    };
-    
-
-    const observer = new IntersectionObserver(handleIntersect, observerOptions);
-
-    const cards = document.querySelectorAll('.service-card');
-    cards.forEach(card => observer.observe(card));
-
-    return () => observer.disconnect();
-  }, []);
-
   const services = [
     {
-      icon: <Rocket className="h-10 w-10 text-purple-500 mb-2" />,
+      icon: <Rocket className="h-8 w-8 text-gray-900" />,
       title: "MVP Development",
-      description: "Quick market validation with minimal investment",
-      delay: "delay-[0ms]"
+      description: "Quick market validation with minimal investment. Get your product to market in weeks, not months.",
     },
     {
-      icon: <Code2 className="h-10 w-10 text-purple-500 mb-2" />,
+      icon: <Code2 className="h-8 w-8 text-gray-900" />,
       title: "Custom Software",
-      description: "Tailored solutions for your business",
-      delay: "delay-[200ms]"
+      description: "Tailored solutions built specifically for your business needs and requirements.",
     },
     {
-      icon: <Users className="h-10 w-10 text-purple-500 mb-2" />,
-      title: "Consulting",
-      description: "Expert guidance and strategy",
-      delay: "delay-[400ms]"
+      icon: <Users className="h-8 w-8 text-gray-900" />,
+      title: "Technical Consulting",
+      description: "Expert guidance on technology decisions, architecture, and development strategy.",
     }
   ];
 
   return (
-    <section id="services" className="py-20 overflow-hidden" ref={sectionRef}>
-      <div className="container mx-auto px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 animate-title">
-          Our <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Services</span>
-        </h2>
+    <section id="services" className="bg-gray-50 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
+            Our Services
+          </h2>
+          <p className="mt-4 text-lg leading-6 text-gray-600 max-w-2xl mx-auto">
+            Comprehensive development solutions designed to transform your ideas into successful products
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 md:flex md:flex-row md:space-x-8 sm:grid-cols-1">
+        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={index}
-              className="service-card w-full card-dark opacity-0 translate-y-8 transition-all duration-700 ease-out"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-lg p-8 shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
             >
-              <Card className="group hover:border-white transition-all duration-300 hover:scale-105 bg-black/60 backdrop-blur-sm border-gray-700 text-white hover:shadow-lg hover:shadow-white/20">
-                <CardHeader>
-                  <div className="transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6">
-                    {service.icon}
-                  </div>
-                  <CardTitle className="transition-colors duration-300 group-hover:text-purple-400">
-                    {service.title}
-                  </CardTitle>
-                  <CardDescription className="text-gray-300 transition-opacity duration-300 group-hover:opacity-90">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 transition-all duration-300 group-hover:text-white">
-                    Launch your product quickly and efficiently with our proven development process.
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
+              <div className="flex items-center justify-center w-16 h-16 bg-gray-100 rounded-lg mb-6">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 leading-6">
+                {service.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .animate-in {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-
-        .stagger-animate {
-          animation: float 3s ease-in-out infinite;
-        }
-
-        .animate-title {
-          animation: slideDown 1s ease-out forwards;
-        }
-
-        @keyframes float {
-          0% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-          100% {
-            transform: translateY(0px);
-          }
-        }
-
-        @keyframes slideDown {
-          0% {
-            opacity: 0;
-            transform: translateY(-30px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .service-card:nth-child(1) .stagger-animate {
-          animation-delay: 0s;
-        }
-
-        .service-card:nth-child(2) .stagger-animate {
-          animation-delay: 0.2s;
-        }
-
-        .service-card:nth-child(3) .stagger-animate {
-          animation-delay: 0.4s;
-        }
-      `}</style>
     </section>
   );
 };

@@ -1,228 +1,279 @@
-"use client"
-import React, { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+"use client";
+import React, { useState, useEffect } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { ChevronLeft, ChevronRight} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from 'lucide-react';
 import Image from 'next/image';
 
 const projects = [
-{
+  {
     id: '1',
-    title: 'CRM-based dasahboards',
-    description: 'A CRM website for anayltical study of the accounts',
-    technologies: ['Next.js', 'Fastapi', 'MongoDB', 'JavaScript'],
+    title: 'CRM Dashboard',
+    description: 'A comprehensive CRM platform for analytical study of customer accounts with real-time data visualization.',
+    technologies: ['Next.js', 'FastAPI', 'MongoDB', 'JavaScript'],
     imageUrl: '/photo/crm.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://crm-dashboard-snowy.vercel.app/'
+    liveUrl: 'https://crm-dashboard-snowy.vercel.app/',
+    category: 'Dashboard'
   },
-  
   {
     id: '2',
     title: 'Flowrise',
-    description: 'A website where user can learn about productivity hacks ',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript',"shadcn",],
+    description: 'A productivity-focused website where users learn effective productivity hacks and time management techniques.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Shadcn/ui'],
     imageUrl: '/photo/flowrise.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://flowrise-prismic.vercel.app/'
+    liveUrl: 'https://flowrise-prismic.vercel.app/',
+    category: 'Web App'
   },
-  
-  
   {
     id: '3',
-    title: 'Coustmized Stripe Payment gateway',
-    description: 'coustmize the tradititon stripe payment gateway in popup style and in same url ',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'Stripe'],
+    title: 'Custom Stripe Integration',
+    description: 'Customized Stripe payment gateway with popup-style checkout that keeps users on the same URL.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Stripe'],
     imageUrl: '/photo/stripe.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://strip-omega.vercel.app/'
+    liveUrl: 'https://strip-omega.vercel.app/',
+    category: 'E-commerce'
   },
   {
     id: '4',
-    title: ' AI Notes taking app',
-    description: 'A website where user can generate notes from audio,youtube video,by summarizing pdf',
-    technologies: ['React', 'python', 'supabase', 'JavaScript'],
+    title: 'AI Notes App',
+    description: 'An intelligent note-taking application that generates notes from audio, YouTube videos, and PDF summaries.',
+    technologies: ['React', 'Python', 'Supabase', 'OpenAI'],
     imageUrl: '/photo/ai.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: '#',
+    category: 'AI/ML'
   },
   {
     id: '5',
-    title: ' Ngl web app',
-    description: 'A web app like Instagrams NGL feature, where anyone can send anonymous messages to a user by visiting their public profile',
-    technologies: ['Next.js', 'TypeScript', 'NoSQL', 'JavaScript'],
+    title: 'Anonymous Messaging Platform',
+    description: 'A web application similar to Instagram\'s NGL feature for sending anonymous messages via public profiles.',
+    technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Node.js'],
     imageUrl: '/photo/ngl.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
+    liveUrl: '#',
+    category: 'Social'
   },
   {
     id: '6',
     title: 'Superclass',
-    description: 'Founded A comprehensive e-learning platform that facilitates live interactive classes and offers an intuitive user experience',
+    description: 'A comprehensive e-learning platform facilitating live interactive classes with intuitive user experience.',
     technologies: ['React', 'Next.js', 'Node.js', 'MongoDB'],
     imageUrl: '/photo/super.png',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://superclasses.site/'
-  },
-  {
-    id: '7',
-    title: 'Framer design',
-    description: '',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/im2.avif',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-   
-  {
-    id: '8',
-    title: 'AI Ranking app',
-    description: 'A website where user can generate rankings base on real time data',
-    technologies: ['Next.js', 'TypeScript', 'supabase', 'JavaScript'],
-    imageUrl: '/photo/ima.webp',
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com'
-  },
-
-
-
-
-
+    liveUrl: 'https://superclasses.site/',
+    category: 'Education'
+  }
 ];
 
 const ProjectShowcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
+  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
+  const filteredProjects = selectedCategory === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === selectedCategory);
+
+  const currentProject = filteredProjects[currentIndex] || filteredProjects[0];
+
+  // Auto-scroll function
   const nextProject = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+      prevIndex === filteredProjects.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const previousProject = () => {
     setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? filteredProjects.length - 1 : prevIndex - 1
     );
   };
 
+  const handleCategoryChange = (category: string) => {
+    setSelectedCategory(category);
+    setCurrentIndex(0);
+  };
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (isPlaying && filteredProjects.length > 1) {
+      const id = setInterval(() => {
+        nextProject();
+      }, 4000); // Change project every 4 seconds
+      setIntervalId(id);
+
+      return () => {
+        if (id) clearInterval(id);
+      };
+    } else {
+      if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(null);
+      }
+    }
+  }, [isPlaying, filteredProjects.length, currentIndex]);
+
+  // Reset auto-scroll when category changes
+  useEffect(() => {
+    if (intervalId) {
+      clearInterval(intervalId);
+    }
+    setCurrentIndex(0);
+  }, [selectedCategory]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, []);
+
+  if (!currentProject) return null;
+
   return (
-    <div className="min-h-screen bg-black py-12 px-4 relative overflow-hidden">
-      {/* Graphical background effects */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/5 rounded-full filter blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/10 rounded-full filter blur-3xl" />
-      </div>
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
-          Featured Projects
-        </h1>
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button 
-            onClick={previousProject}
-            className="absolute left-0 top-1/2 -translate-y-1/2 btn-white z-10 shadow-xl"
-            aria-label="Previous project"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button 
-            onClick={nextProject}
-            className="absolute right-0 top-1/2 -translate-y-1/2 btn-white z-10 shadow-xl"
-            aria-label="Next project"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-          {/* Project Cards Container */}
-          <div className=" overflow-x-hidden">
-            <div 
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-            >
-              <AnimatePresence initial={false} mode="wait">
-                {projects.map((project, idx) => (
-                (
-                    <motion.div 
-                      key={project.id}
-                      className="w-full flex-shrink-0 px-4"
-                      initial={{ opacity: 0, y: 40 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -40 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <Card className="bg-zinc-900 border border-zinc-800 text-white shadow-lg rounded-xl overflow-hidden transform transition-all duration-500">
-                        <CardHeader className="p-0">
-                          <div className="relative w-full aspect-video overflow-hidden rounded-t-xl">
-                            <Image
-                              src={project.imageUrl}
-                              alt={project.title}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 700px"
-                              className="object-cover"
-                              priority={idx === 0}
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
-                          </div>
-                        </CardHeader>
-                        <CardContent className="p-6">
-                          <CardTitle className="text-2xl mb-3 text-white">
-                            {project.title}
-                          </CardTitle>
-                          <p className="text-gray-300 mb-4">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-2 mb-6">
-                            {(project.technologies ?? []).map((tech) => (
-                              <Badge
-                                key={tech}
-                                variant="secondary"
-                                className="bg-gray-800 hover:bg-gray-700 text-white border border-gray-700"
-                              >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
-                          <div className="flex gap-4 mt-4">
-                          
- 
-  <a
-    href={project.liveUrl}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-  >
-    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-    </svg>
-    Live Demo
-  </a>
-</div>
-                       
-                        </CardContent>
-                      </Card>
-                    </motion.div>
-                  )
-                ))}
-              </AnimatePresence>
-            </div>
-          </div>
-          {/* Navigation Dots */}
-          <div className="flex justify-center mt-6 gap-2">
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  currentIndex === index 
-                    ? 'bg-white w-4' 
-                    : 'bg-gray-700 hover:bg-gray-500'
+    <section className="bg-white py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
+            Featured Projects
+          </h2>
+          <p className="mt-4 text-lg leading-6 text-gray-600 max-w-2xl mx-auto">
+            Explore our portfolio of successful projects and see how we transform ideas into reality
+          </p>
+        </div>
+
+        {/* Category Filter and Controls */}
+        <div className="flex flex-col items-center gap-4 mb-12">
+          <div className="flex flex-wrap justify-center gap-2">
+            {categories.map((category) => (
+              <Button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                variant={selectedCategory === category ? "default" : "outline"}
+                className={`text-sm ${
+                  selectedCategory === category 
+                    ? 'bg-gray-900 text-white hover:bg-gray-800' 
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
                 }`}
-                aria-label={`Go to project ${index + 1}`}
-              />
+              >
+                {category}
+              </Button>
             ))}
           </div>
+
+        
+          
         </div>
+
+        {/* Project Display */}
+        <div className="relative">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Project Image */}
+            <div className="relative">
+              <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+                <Image
+                  src={currentProject.imageUrl}
+                  alt={currentProject.title}
+                  fill
+                  className="object-cover transition-all duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            {/* Project Info */}
+            <div className="space-y-6">
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Badge variant="secondary" className="text-xs">
+                    {currentProject.category}
+                  </Badge>
+                </div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                  {currentProject.title}
+                </h3>
+                <p className="text-gray-600 leading-6">
+                  {currentProject.description}
+                </p>
+              </div>
+
+              {/* Technologies */}
+              <div>
+                <h4 className="text-sm font-medium text-gray-900 mb-3">
+                  Technologies Used
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {currentProject.technologies.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="outline"
+                      className="text-xs border-gray-300 text-gray-700"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+         
+            </div>
+          </div>
+
+       
+        </div>
+
+        {/* Navigation Dots with Progress */}
+        {filteredProjects.length > 1 && (
+          <div className="flex justify-center mt-12 gap-2">
+            {filteredProjects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsPlaying(false); // Pause auto-scroll when manually selecting
+                }}
+                className={`relative h-2 rounded-full transition-all duration-100 ${
+                  currentIndex === index 
+                    ? 'bg-gray-900 w-8' 
+                    : 'bg-gray-300 hover:bg-gray-400 w-2'
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              >
+                {/* Progress bar for current dot */}
+                {currentIndex === index && isPlaying && (
+                  <div 
+                    className="absolute top-0 left-0 h-full bg-gray-600 rounded-full animate-progress"
+                    style={{
+                      animation: 'progress 4s linear infinite'
+                    }}
+                  />
+                )}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+
+      {/* Custom CSS for progress animation */}
+      <style jsx>{`
+        @keyframes progress {
+          0% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+        
+        .animate-progress {
+          animation: progress 4s linear infinite;
+        }
+      `}</style>
+    </section>
   );
 };
 
