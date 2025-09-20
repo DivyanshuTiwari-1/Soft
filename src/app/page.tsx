@@ -29,15 +29,6 @@ const MVPWebsite = () => {
       <ServicesScroll/>
       <FeaturesSection />
       <ProjectShowcase/>
-<<<<<<< HEAD
-=======
-      <WhyFeatures/>
-     
-
-     <ServicesSection/>
-     
-     
->>>>>>> f2fe870727b8a76d522a578c303bc14e40636eaf
      <PricingSection/>
      
      
