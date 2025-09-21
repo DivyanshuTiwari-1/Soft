@@ -108,27 +108,12 @@ const PricingSection = () => {
                 ))}
               </ul>
               
-              <Button
-                className={`w-full ${
-                  plan.popular
-                    ? 'bg-gray-900 hover:bg-gray-800 text-white'
-                    : 'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300'
-                }`}
-              >
-                {plan.cta}
-              </Button>
+              
             </div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <p className="text-gray-600">
-            Need something custom?{' '}
-            <a href="#contact" className="font-medium text-gray-900 underline">
-              Let&apos;s talk
-            </a>
-          </p>
-        </div>
+       
       </div>
     </section>
   );

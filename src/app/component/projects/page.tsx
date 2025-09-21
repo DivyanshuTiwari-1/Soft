@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
@@ -75,11 +75,11 @@ const ProjectShowcase = () => {
   const currentProject = filteredProjects[currentIndex] || filteredProjects[0];
 
   // Auto-scroll function
-  const nextProject = () => {
+  const nextProject = useCallback(() => {
     setCurrentIndex((prevIndex) => 
       prevIndex === filteredProjects.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [filteredProjects.length]);
 
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
@@ -103,7 +103,7 @@ const ProjectShowcase = () => {
         setIntervalId(null);
       }
     }
-  }, [isPlaying, filteredProjects.length, nextProject, intervalId]);
+  }, [isPlaying, filteredProjects.length]);
 
   // Reset auto-scroll when category changes
   useEffect(() => {
@@ -111,7 +111,7 @@ const ProjectShowcase = () => {
       clearInterval(intervalId);
     }
     setCurrentIndex(0);
-  }, [selectedCategory, intervalId]);
+  }, [selectedCategory]);
 
   // Cleanup on unmount
   useEffect(() => {
