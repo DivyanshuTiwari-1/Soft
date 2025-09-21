@@ -91,7 +91,7 @@ const ProjectShowcase = () => {
     if (isPlaying && filteredProjects.length > 1) {
       const id = setInterval(() => {
         nextProject();
-      }, 4000); // Change project every 4 seconds
+      }, 2000); // Changed from 4000 to 2000 - Change project every 2 seconds
       setIntervalId(id);
 
       return () => {
@@ -237,7 +237,7 @@ const ProjectShowcase = () => {
                   <div 
                     className="absolute top-0 left-0 h-full bg-gray-600 rounded-full animate-progress"
                     style={{
-                      animation: 'progress 4s linear infinite'
+                      animation: 'progress 2s linear infinite'
                     }}
                   />
                 )}
@@ -259,7 +259,7 @@ const ProjectShowcase = () => {
         }
         
         .animate-progress {
-          animation: progress 4s linear infinite;
+          animation: progress 1s linear infinite;
         }
       `}</style>
     </section>
