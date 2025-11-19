@@ -1,4 +1,4 @@
-"use client";
+                                                      "use client";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, X } from "lucide-react";
@@ -24,7 +24,9 @@ const CTASection = () => {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button
               onClick={toggleModal}
-              className="bg-black hover:bg-gray-800 text-white px-6 py-3 text-base font-medium"
+              className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 text-base font-medium
+
+"
             >
               Schedule a Call
               <ArrowRight className="ml-2 h-4 w-4" />

@@ -43,7 +43,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <h3 className="text-xl font-cal font-semibold text-gray-900">
-                SoftAI
+                Softmvp
               </h3>
             </div>
             <p className="text-gray-600 mb-6 max-w-md">
@@ -96,7 +96,7 @@ const Footer = () => {
         <div className="mt-16 pt-8 border-t border-gray-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-gray-500">
-              {currentYear} SoftAI. All rights reserved.
+              {currentYear} Softmvp. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link 

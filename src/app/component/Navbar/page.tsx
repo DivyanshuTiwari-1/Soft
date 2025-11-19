@@ -23,7 +23,7 @@ const Navbar = () => {
               <div className="w-8 h-8 rounded-lg overflow-hidden">
                
               </div>
-              <span className="text-xl font-cal font-semibold text-gray-900">SoftAI</span>
+              <span className="text-xl font-cal font-semibold text-gray-900">Softmvp</span>
             </div>
           </div>
 
@@ -38,7 +38,8 @@ const Navbar = () => {
                 {item.label}
               </a>
             ))}
-            <Button className="bg-black hover:bg-gray-800 text-white text-sm">
+            <Button className="bg-pink-500 hover:bg-pink-600 text-white text-sm
+">
               Contact Us
             </Button>
           </div>
@@ -71,7 +72,7 @@ const Navbar = () => {
                 </a>
               ))}
               <div className="px-4 pt-2">
-                <Button className="w-full bg-black hover:bg-gray-800 text-white text-sm rounded-lg">
+                <Button className="w-full bg-pink-500 hover:bg-pink-600 text-white text-sm rounded-lg">
                   Contact Us
                 </Button>
               </div>
