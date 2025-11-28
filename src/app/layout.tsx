@@ -18,19 +18,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Softmvp – Software Agency for MVPs, SaaS & AI Apps",
-  description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+  title: "Softmvp – Software Agency for MVPs",
+  description: "We build high-quality MVPs to help founders and businesses scale faster.",
   openGraph: {
-    title: "Softmvp – Software Agency for MVPs, SaaS & AI Apps",
-    description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+    title: "Softmvp – Software Agency for MVPs",
+    description: "We build high-quality MVPs to help founders and businesses scale faster.",
     images: ["/photo/Softtt.jpg"],
-    url: "https://softmvp.site/",
-    type: "website",
+    url: "https://softai.site/",
+    type: "website",                    
   },
   twitter: {
     card: "summary_large_image",
-    title: "Softmvp – Software Agency for MVPs, SaaS & AI Apps",
-    description: "We build high-quality MVPs, SaaS platforms, and AI-powered apps to help founders and businesses scale faster.",
+    title: "Softmvp – Software Agency for MVPs",
+    description: "We build high-quality MVPs to help founders and businesses scale faster.",
     images: ["/photo/Softtt.jpg"],
   },
 };

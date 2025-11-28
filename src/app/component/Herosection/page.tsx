@@ -22,7 +22,7 @@ const HeroSection = () => {
       cal("floatingButton", {
         calLink: "divyanshu-tiwari-4rauop/30min",
         buttonText: "Book a Call",
-        buttonColor: "#ec4899",
+        buttonColor: "#be185d",  // dark pink
         buttonTextColor: "#ffffff",
         config: {
           layout: "month_view",
@@ -74,7 +74,7 @@ const HeroSection = () => {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button
                 onClick={openPopup}
-                className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 text-base font-medium"
+                className="bg-pink-700 hover:bg-pink-800 text-white px-6 py-3 text-base font-medium"
 
               >
                 Schedule a Call

@@ -19,11 +19,11 @@ const ServicesScroll = () => {
       title: "MVP Development",
       imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center"
     },
-    {
-      id: 4,
-      title: "SaaS Development",
-      imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center"
-    },
+    // {
+    //   id: 4,
+    //   title: "SaaS Development",
+    //   imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop&crop=center"
+    // },
   
   ];
 
@@ -31,7 +31,7 @@ const ServicesScroll = () => {
   const duplicatedServices = [...services, ...services];
 
   return (
-    <section className="bg-white py-16 overflow-hidden">
+    <section id="services" className="bg-white py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
         <div className="text-center">
           <h2 className="text-2xl font-cal font-semibold tracking-tight text-gray-900 sm:text-3xl">

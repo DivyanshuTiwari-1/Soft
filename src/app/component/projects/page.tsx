@@ -1,267 +1,159 @@
 "use client";
-import React, { useState, useEffect, useCallback } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    id: '1',
-    title: 'CRM Dashboard',
-    description: 'A comprehensive CRM platform for analytical study of customer accounts with real-time data visualization.',
-    technologies: ['Next.js', 'FastAPI', 'MongoDB', 'JavaScript'],
-    imageUrl: '/photo/crm.png',
-    liveUrl: 'https://crm-dashboard-snowy.vercel.app/',
-    category: 'Dashboard'
+    id: "1",
+    title: "AI automated calling",
+    description:
+      "Developed a complete lead generatation tool system can do 1000+ ai calls ,agent can do manual calling.",
+    technologies: ["React.js", "Node.js", "postgress", "redis", "talwind"],
+    imageUrl: "/photo/ai-cold.png",
+    liveUrl: "",
   },
   {
-    id: '2',
-    title: 'Flowrise',
-    description: 'A productivity-focused website where users learn effective productivity hacks and time management techniques.',
-    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Shadcn/ui'],
-    imageUrl: '/photo/flowrise.png',
-    liveUrl: 'https://flowrise-prismic.vercel.app/',
-    category: 'Web App'
+    id: "2",
+    title: "Email Finder Tool",
+    description:
+      "A email finder tool , to get the real email of working professtional.",
+    technologies: [ "Next.js", "Node.js", "MongoDB", "talwind"],
+    imageUrl: "/photo/email-finder.png",
+    liveUrl: "https://superclasses.site/",
+  },
+  
+  {
+    id: "3",
+    title: "Flowrise",
+    description:
+      "A productivity-focused website where users learn effective productivity hacks and time management techniques.",
+    technologies: ["Next.js", "TypeScript", "Supabase", "Shadcn/ui"],
+    imageUrl: "/photo/flowrise.png",
+    liveUrl: "https://flowrise-prismic.vercel.app/",
   },
   {
-    id: '3',
-    title: 'Custom Stripe Integration',
-    description: 'Customized Stripe payment gateway with popup-style checkout that keeps users on the same URL.',
-    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Stripe'],
-    imageUrl: '/photo/stripe.png',
-    liveUrl: 'https://strip-omega.vercel.app/',
-    category: 'E-commerce'
+    id: "4",
+    title: "AI Notes App",
+    description:
+      "An intelligent note-taking application that generates notes from audio, YouTube videos, and PDF summaries.",
+    technologies: ["React", "Python", "Supabase", "OpenAI"],
+    imageUrl: "/photo/ai.png",
+    liveUrl: "#",
   },
   {
-    id: '4',
-    title: 'AI Notes App',
-    description: 'An intelligent note-taking application that generates notes from audio, YouTube videos, and PDF summaries.',
-    technologies: ['React', 'Python', 'Supabase', 'OpenAI'],
-    imageUrl: '/photo/ai.png',
-    liveUrl: '#',
-    category: 'AI/ML'
+    id: "5",
+    title: "Superclass",
+    description:
+      "A comprehensive e-learning platform facilitating live interactive classes with intuitive user experience.",
+    technologies: ["React",  "Node.js", "MongoDB", "talwind"],
+    imageUrl: "/photo/super.png",
+    liveUrl: "https://superclasses.site/",
   },
-  {
-    id: '5',
-    title: 'Anonymous Messaging Platform',
-    description: 'A web application similar to Instagram\'s NGL feature for sending anonymous messages via public profiles.',
-    technologies: ['Next.js', 'TypeScript', 'MongoDB', 'Node.js'],
-    imageUrl: '/photo/ngl.png',
-    liveUrl: '#',
-    category: 'Social'
-  },
-  {
-    id: '6',
-    title: 'Superclass',
-    description: 'A comprehensive e-learning platform facilitating live interactive classes with intuitive user experience.',
-    technologies: ['React', 'Next.js', 'Node.js', 'MongoDB'],
-    imageUrl: '/photo/super.png',
-    liveUrl: 'https://superclasses.site/',
-    category: 'Education'
-  }
+ 
 ];
 
 const ProjectShowcase = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
-  const categories = ['All', ...Array.from(new Set(projects.map(p => p.category)))];
-  const filteredProjects = selectedCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === selectedCategory);
+  useEffect(() => {
+    if (projects.length <= 1) return;
 
-  const currentProject = filteredProjects[currentIndex] || filteredProjects[0];
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 5000);
 
-  // Auto-scroll function
-  const nextProject = useCallback(() => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === filteredProjects.length - 1 ? 0 : prevIndex + 1
-    );
-  }, [filteredProjects.length]);
+    return () => clearInterval(interval);
+  }, []);
 
-  const handleCategoryChange = (category: string) => {
-    setSelectedCategory(category);
-    setCurrentIndex(0);
+  const currentProject = projects[currentIndex];
+
+  const goToProject = (offset: number) => {
+    setCurrentIndex((prev) => {
+      const nextIndex = (prev + offset + projects.length) % projects.length;
+      return nextIndex;
+    });
   };
 
-  // Auto-scroll effect
-  useEffect(() => {
-    if (isPlaying && filteredProjects.length > 1) {
-      const id = setInterval(() => {
-        nextProject();
-      }, 2000); // Changed from 4000 to 2000 - Change project every 2 seconds
-      setIntervalId(id);
-
-      return () => {
-        if (id) clearInterval(id);
-      };
-    } else {
-      if (intervalId) {
-        clearInterval(intervalId);
-        setIntervalId(null);
-      }
-    }
-  }, [isPlaying, filteredProjects.length]);
-
-  // Reset auto-scroll when category changes
-  useEffect(() => {
-    if (intervalId) {
-      clearInterval(intervalId);
-    }
-    setCurrentIndex(0);
-  }, [selectedCategory]);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
-  }, [intervalId]);
-
-  if (!currentProject) return null;
-
   return (
-    <section className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+    <section id="projects" className="bg-white py-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-cal font-semibold tracking-tight text-gray-900 sm:text-4xl">
-            Featured Projects
+          <p className="text-xs uppercase tracking-[0.4em] text-gray-500">MVPs delivered</p>
+          <h2 className="mt-6 text-4xl font-cal font-semibold tracking-tight text-gray-900 sm:text-5xl">
+            Real products launched in a matter of weeks
           </h2>
-          <p className="mt-4 text-lg leading-6 text-gray-600 max-w-2xl mx-auto">
-            Explore our portfolio of successful projects and see how we transform ideas into reality
+          <p className="mt-5 text-lg leading-7 text-gray-600 max-w-3xl mx-auto">
+            We run the same four-week sprint for every build—rapid scope, focused execution, launch-ready
+            handoffs. Here’s the stream of MVPs going live right now.
           </p>
         </div>
 
-        {/* Category Filter and Controls */}
-        <div className="flex flex-col items-center gap-4 mb-12">
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((category) => (
-              <Button
-                key={category}
-                onClick={() => handleCategoryChange(category)}
-                variant={selectedCategory === category ? "default" : "outline"}
-                className={`text-sm ${
-                  selectedCategory === category 
-                    ? 'bg-gray-900 text-white hover:bg-gray-800' 
-                    : 'border-gray-300 text-gray-700 hover:bg-gray-50'
-                }`}
-              >
-                {category}
-              </Button>
-            ))}
-          </div>
-
-        
-          
-        </div>
-
-        {/* Project Display */}
-        <div className="relative">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Project Image */}
-            <div className="relative">
-              <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
-                <Image
-                  src={currentProject.imageUrl}
-                  alt={currentProject.title}
-                  fill
-                  className="object-cover transition-all duration-500"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+        <div className="grid gap-16 lg:gap-10 lg:grid-cols-2 items-start rounded-[32px] border border-gray-200/80 bg-white/70 p-8 sm:p-12 shadow-sm">
+          <div className="space-y-12 lg:pr-8">
+            <div className="space-y-5">
+              <Badge className="bg-black text-white px-4 py-1 rounded-full text-sm">
+                #{currentIndex + 1} MVP shipped
+              </Badge>
+              <p className="text-xs uppercase tracking-[0.4em] text-gray-500">Four-week build</p>
+              <h3 className="text-3xl font-semibold text-gray-900">{currentProject.title}</h3>
+              <p className="text-lg text-gray-600 leading-relaxed">{currentProject.description}</p>
             </div>
 
-            {/* Project Info */}
-            <div className="space-y-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <Badge variant="secondary" className="text-xs">
-                    {currentProject.category}
-                  </Badge>
-                </div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4">
-                  {currentProject.title}
-                </h3>
-                <p className="text-gray-600 leading-6">
-                  {currentProject.description}
-                </p>
-              </div>
-
-              {/* Technologies */}
-              <div>
-                <h4 className="text-sm font-medium text-gray-900 mb-3">
-                  Technologies Used
-                </h4>
-                <div className="flex flex-wrap gap-2">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="rounded-[28px] border border-gray-200 bg-white p-6 w-full shadow-xs">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-[0.4em]">Stack</p>
+                <div className="mt-4 flex flex-wrap gap-2">
                   {currentProject.technologies.map((tech) => (
                     <Badge
                       key={tech}
                       variant="outline"
-                      className="text-xs border-gray-300 text-gray-700"
+                      className="text-xs border-gray-200 bg-gray-50 text-gray-900 px-3 py-1 rounded-full"
                     >
                       {tech}
                     </Badge>
                   ))}
                 </div>
               </div>
+              <div className="rounded-[28px] border border-gray-200 bg-white p-6 w-full shadow-xs">
+                <p className="text-xs font-semibold text-gray-500 uppercase tracking-[0.4em]">Result</p>
+                <p className="mt-4 text-sm text-gray-700 leading-7">
+                  Launch-ready experience with full hand-off, QA, and growth tooling configured.
+                </p>
+              </div>
+            </div>
 
-         
+            <div className="flex flex-wrap gap-3">
+              <Button variant="secondary" onClick={() => goToProject(-1)} className="rounded-full">
+                <ArrowLeft className="w-4 h-4" />
+              </Button>
+              <Button variant="secondary" onClick={() => goToProject(1)} className="rounded-full">
+                <ArrowRight className="w-4 h-4" />
+              </Button>
             </div>
           </div>
 
-       
-        </div>
-
-        {/* Navigation Dots with Progress */}
-        {filteredProjects.length > 1 && (
-          <div className="flex justify-center mt-12 gap-2">
-            {filteredProjects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentIndex(index);
-                  setIsPlaying(false); // Pause auto-scroll when manually selecting
-                }}
-                className={`relative h-2 rounded-full transition-all duration-100 ${
-                  currentIndex === index 
-                    ? 'bg-gray-900 w-8' 
-                    : 'bg-gray-300 hover:bg-gray-400 w-2'
-                }`}
-                aria-label={`Go to project ${index + 1}`}
-              >
-                {/* Progress bar for current dot */}
-                {currentIndex === index && isPlaying && (
-                  <div 
-                    className="absolute top-0 left-0 h-full bg-gray-600 rounded-full animate-progress"
-                    style={{
-                      animation: 'progress 2s linear infinite'
-                    }}
-                  />
-                )}
-              </button>
-            ))}
+          <div className="relative lg:pl-8">
+            <div className="aspect-[4/3] rounded-[32px] border-2 border-gray-300 bg-white p-2 shadow-lg">
+              <div className="relative h-full w-full overflow-hidden rounded-[24px] bg-gray-50">
+                <Image
+                  src={currentProject.imageUrl}
+                  alt={currentProject.title}
+                  fill
+                  className="object-cover transition-all duration-700"
+                  sizes="(max-width: 1024px) 100vw, 45vw"
+                />
+                <div className="absolute bottom-4 left-4 rounded-full bg-white/90 px-4 py-1 text-sm font-medium text-gray-800 shadow">
+                  MVP #{currentIndex + 1}
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
-
-      {/* Custom CSS for progress animation */}
-      <style jsx>{`
-        @keyframes progress {
-          0% {
-            width: 0%;
-          }
-          100% {
-            width: 100%;
-          }
-        }
-        
-        .animate-progress {
-          animation: progress 1s linear infinite;
-        }
-      `}</style>
     </section>
   );
 };
