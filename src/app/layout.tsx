@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: "Softmvp – Software Agency for MVPs",
     description: "We build high-quality MVPs to help founders and businesses scale faster.",
     images: ["/photo/Softtt.jpg"],
-    url: "https://softai.site/",
+    url: "https://softmvp.co.in/",
     type: "website",                    
   },
   twitter: {

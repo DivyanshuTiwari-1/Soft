@@ -52,7 +52,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <Link 
-                href="https://x.com/softai_site?s=08" 
+                href="https://x.com/softmvp_?t=VjlIGGPJjwVQufSOwn6o2w&s=08" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-gray-600 transition-colors"
@@ -61,7 +61,7 @@ const Footer = () => {
                 <span className="sr-only">Twitter</span>
               </Link>
               <Link 
-                href="mailto:contactsoftai@gmail.com"
+                href="contactsoftmvp@gmail.com"
                 className="text-gray-400 hover:text-gray-600 transition-colors"
               >
                 <Mail className="h-5 w-5" />
