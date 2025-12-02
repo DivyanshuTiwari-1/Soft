@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Twitter, Mail } from "react-feather";
+import { Twitter, Mail, Instagram, Linkedin} from "react-feather";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,23 +51,48 @@ const Footer = () => {
               We transform ideas into market-ready solutions.
             </p>
             <div className="flex space-x-4">
-              <Link 
-                href="https://x.com/softmvp_?t=VjlIGGPJjwVQufSOwn6o2w&s=08" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link 
-                href="contactsoftmvp@gmail.com"
-                className="text-gray-400 hover:text-gray-600 transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </Link>
-            </div>
+  {/* Twitter */}
+  <Link 
+    href="https://x.com/softmvp_?t=VjlIGGPJjwVQufSOwn6o2w&s=08" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-gray-600 transition-colors"
+  >
+    <Twitter className="h-5 w-5" />
+    <span className="sr-only">Twitter</span>
+  </Link>
+
+  {/* Email */}
+  <Link 
+    href="mailto:contactsoftmvp@gmail.com"
+    className="text-gray-400 hover:text-gray-600 transition-colors"
+  >
+    <Mail className="h-5 w-5" />
+    <span className="sr-only">Email</span>
+  </Link>
+
+  {/* Instagram */}
+  <Link
+    href="https://www.instagram.com/softmvp.co.in?igsh=MXRwZ25jcmd2YW16NA=="
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-gray-600 transition-colors"
+  >
+    <Instagram className="h-5 w-5" />
+    <span className="sr-only">Instagram</span>
+  </Link>
+
+  {/* LinkedIn */}
+  <Link
+    href="https://www.linkedin.com/in/your_linkedin_username"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-gray-400 hover:text-gray-600 transition-colors"
+  >
+    <Linkedin className="h-5 w-5" />
+    <span className="sr-only">LinkedIn</span>
+  </Link>
+</div>
           </div>
 
           {/* Footer Sections */}
