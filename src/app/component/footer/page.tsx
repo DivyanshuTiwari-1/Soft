@@ -84,7 +84,7 @@ const Footer = () => {
 
   {/* LinkedIn */}
   <Link
-    href="https://www.linkedin.com/in/your_linkedin_username"
+    href="https://www.linkedin.com/company/softmvp/"
     target="_blank"
     rel="noopener noreferrer"
     className="text-gray-400 hover:text-gray-600 transition-colors"
