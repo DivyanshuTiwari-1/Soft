@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCalApi } from "@calcom/embed-react";
-
+import Image from "next/image";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -44,11 +44,12 @@ const Navbar = () => {
           
           {/* Company Logo Image */}
           <div className="w-10 h-10 rounded-lg overflow-hidden">
-            <img
-              src="/photo/logo.png"   // <- Put your PNG in public folder
-              alt="Softmvp Logo"
-              className="w-full h-full object-contain"
-            />
+            <Image
+  src="/photo/logo.png" 
+  alt="logo"
+  className="w-full h-full object-contain"
+
+/>
           </div>
 
           <span className="text-xl font-cal font-semibold text-gray-900">
