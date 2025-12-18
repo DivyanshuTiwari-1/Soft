@@ -6,7 +6,7 @@ const ServicesScroll = () => {
   const services = [
     {
       id: 1,
-      title: "Web Development",
+      title: "Frontend Development",
       imageUrl: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop&crop=center"
     },
     {

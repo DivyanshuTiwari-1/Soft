@@ -13,6 +13,12 @@ import FeaturesSection from './component/feature section/page';
 
 import PricingSection from './component/pricing/page';
 import ProjectShowcase from './component/projects/page';
+import RoadToLaunch from './component/Readytolaunch/page';
+
+
+
+
+
 const MVPWebsite = () => {
  
 
@@ -20,7 +26,7 @@ const MVPWebsite = () => {
 
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-black text-gray-100">
+    <div className="min-h-screen bg-gradient-to-br bg-white text-gray-100">
    
    <Navbar/>
 
@@ -30,6 +36,7 @@ const MVPWebsite = () => {
       <FeaturesSection />
       <ProjectShowcase/>
      <PricingSection/>
+     <RoadToLaunch />
      
      
      

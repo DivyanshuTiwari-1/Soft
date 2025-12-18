@@ -48,7 +48,7 @@ export default function RootLayout({
         {/* Clean grid background for white theme */}
         <div 
           className="fixed inset-0 -z-10 pointer-events-none bg-white"
-          style={{
+          style={{  
             backgroundImage: `
               linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
               linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px)
