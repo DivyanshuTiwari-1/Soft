@@ -256,12 +256,23 @@ const PricingSection = () => {
             </ul>
 
             {/* Get Started Button */}
-            <button
+            {/* <button
               onClick={openCal}
-              className="mt-8 w-full rounded-xl bg-white border border-gray-200 text-gray-800 hover:bg-gray-50 py-3 font-medium  transition"
+              className="mt-8 w-full rounded-xl bg-white border border-gray-400 text-gray-800 hover:bg-gray-50 py-3 font-medium  transition"
             >
               Get Started
-            </button>
+            </button> */}
+            <button
+  onClick={openCal}
+  className="mt-8 w-full rounded-xl 
+             bg-white border border-gray-400 
+             text-gray-800 
+             hover:bg-black hover:text-white 
+             py-3 font-medium 
+             transition-colors duration-300"
+>
+  Get Started
+</button>
           </div>
 
           {/* MVP Development */}

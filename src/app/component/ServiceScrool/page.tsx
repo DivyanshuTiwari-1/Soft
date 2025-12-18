@@ -6,17 +6,17 @@ const ServicesScroll = () => {
   const services = [
     {
       id: 1,
-      title: "Frontend Development",
+      title: "MVP Development",
       imageUrl: "https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 2,
-      title: "App Development",
+      title: "Frontend Development",
       imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop&crop=center"
     },
     {
       id: 3,
-      title: "MVP Development",
+      title: "Custom Solution",
       imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center"
     },
     // {
@@ -94,3 +94,4 @@ const ServicesScroll = () => {
 };
 
 export default ServicesScroll;
+

@@ -165,13 +165,21 @@ const Navbar = () => {
             {/* Logo */}
             <div className="flex items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 rounded-lg overflow-hidden">
+                {/* <div className="w-10 h-10 rounded-lg overflow-hidden">
                   <Image
                     src="/photo/logo.png"
                     alt="Softmvp Logo"
                     className="w-full h-full object-contain"
                   />
-                </div>
+                </div> */}
+                <div className="w-10 h-10 rounded-lg overflow-hidden relative">
+  <Image
+    src="/photo/logo.png"
+    alt="Softmvp Logo"
+    fill
+    className="object-contain"
+  />
+</div>
                 <span className="text-xl font-cal font-semibold text-gray-900">
                   Softmvp
                 </span>
