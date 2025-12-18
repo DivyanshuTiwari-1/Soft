@@ -16,7 +16,7 @@ const ServicesScroll = () => {
     },
     {
       id: 3,
-      title: "Custom Solution",
+      title: "Custom Solutions",
       imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop&crop=center"
     },
     // {
