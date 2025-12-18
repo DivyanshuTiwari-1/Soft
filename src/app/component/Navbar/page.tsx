@@ -136,7 +136,7 @@ import React, { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getCalApi } from "@calcom/embed-react";
-
+import Image from "next/image";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -166,7 +166,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 rounded-lg overflow-hidden">
-                  <img
+                  <Image
                     src="/photo/logo.png"
                     alt="Softmvp Logo"
                     className="w-full h-full object-contain"
