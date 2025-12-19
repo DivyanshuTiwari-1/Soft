@@ -162,12 +162,13 @@
 
 
 
-
+"use client";
 import React, { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ExternalLink, Sparkles, Star, Rocket } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Star, Rocket } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const projects = [
   {
@@ -272,7 +273,7 @@ const ProjectShowcase = () => {
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg">
             We run the same four-week sprint for every build—rapid scope, focused execution,
-            launch-ready handoffs. Here's the stream of MVPs going live right now.
+            launch-ready handoffs. Here&apos;s the stream of MVPs going live right now.
           </p>
         </div>
 
@@ -426,9 +427,11 @@ const ProjectShowcase = () => {
               {/* Image container */}
               <div className="relative rounded-2xl md:rounded-3xl overflow-hidden border border-border/50 shadow-2xl bg-card">
                 <div className="aspect-[16/10] bg-gradient-to-br from-muted to-secondary flex items-center justify-center">
-                  <img
+                  <Image
                     src={currentProject.imageUrl}
                     alt={currentProject.title}
+                    width={500}
+                    height={500}
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
