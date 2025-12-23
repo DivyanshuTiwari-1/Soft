@@ -10,8 +10,8 @@ const Footer = () => {
       title: "Services",
       links: [
         { name: "MVP Development", href: "#services" },
-        { name: "Custom Software", href: "#services" },
-        { name: "Technical Consulting", href: "#services" },
+        { name: "Custom Solutions", href: "#services" },
+        { name: "Technical Support", href: "#services" },
         { name: "Support & Maintenance", href: "#services" }
       ]
     },

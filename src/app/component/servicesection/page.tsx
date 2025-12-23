@@ -18,8 +18,11 @@ const ServicesSection = () => {
       icon: <Users className="h-8 w-8 text-gray-900" />,
       title: "Technical Consulting",
       description: "Expert guidance on technology decisions, architecture, and development strategy.",
-    }
+    },
+  
   ];
+
+
 
   return (
     <section id="services" className="bg-gray-50 py-24">

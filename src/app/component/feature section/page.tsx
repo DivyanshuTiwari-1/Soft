@@ -125,7 +125,8 @@
 
 
 
-import { Zap, CheckCircle, Users } from "lucide-react";
+import { Zap, Users } from "lucide-react";
+import {  Shield } from "lucide-react";
 
 const FeaturesSection = () => {
   const features = [
@@ -133,20 +134,23 @@ const FeaturesSection = () => {
       icon: Zap,
       title: "Fast Delivery",
       description:
-        "Get your MVP to market quickly with our streamlined development process",
+        "Get your MVP to market quickly with our streamlined development process.",
     },
-    {
-      icon: CheckCircle,
-      title: "Quality Assured",
-      description:
-        "High-quality code with comprehensive testing and best practices",
-    },
+ 
     {
       icon: Users,
       title: "Expert Team",
       description:
-        "Work with experienced developers and designers who understand your vision",
+        "Work with experienced developers and designers who understand your vision.",
     },
+ 
+    {
+      icon: Shield,
+      title: "Technical Support & Maintenance",
+      description:
+        "Proactive monitoring and rapid issue resolution. We handle everything from bug fixes to performance optimizations.",
+    },
+    
   ];
 
   return (

@@ -283,7 +283,7 @@ const PricingSection = () => {
             </span>
 
             <h3 className="text-xl font-semibold text-gray-900">
-              MVP Web Development
+              MVP Development
             </h3>
             {/* <p className="text-gray-500 mt-1">Complete Starter Package</p> */}
 
@@ -294,7 +294,7 @@ const PricingSection = () => {
 
             <ul className="mt-8 space-y-4 flex-1">
               {[
-                "Complete web app (frontend + backend)",
+                "Complete web app",
                 "Admin dashboard & user management",
                 "Custom design for your brand",
                 "Backend & database setup",

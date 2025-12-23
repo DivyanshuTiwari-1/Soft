@@ -246,7 +246,7 @@ const ProjectShowcase = () => {
   };
 
   return (
-    <section className="relative py-16 md:py-24 px-4 overflow-hidden bg-gradient-to-b from-secondary/30 to-background">
+    <section id="projects"  className="relative py-16 md:py-24 px-4 overflow-hidden bg-gradient-to-b from-secondary/30 to-background">
       {/* Animated background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />

@@ -153,6 +153,8 @@ html {
     animation: scroll 4s linear infinite;
   }
 
+ 
+
   .animate-scroll:hover {
     animation-play-state: paused;
   }
@@ -162,7 +164,7 @@ html {
       transform: translateY(0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-10);
     }
   }
 
