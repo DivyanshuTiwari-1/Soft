@@ -246,7 +246,7 @@ const PricingSection = () => {
                 "Smooth animations and transitions",
                 "Help when you need it",
                 "20–30 day delivery",
-                "Unlimited changes until you are happy",
+               
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-pink-700 mt-0.5" />
@@ -301,7 +301,6 @@ const PricingSection = () => {
                 "Delivery within 30 days",
                 "Deployment & production setup",
                 "Testing & QA",
-                "Unlimited changes until you are happy",
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <Check className="h-5 w-5 text-pink-700 mt-0.5" />
